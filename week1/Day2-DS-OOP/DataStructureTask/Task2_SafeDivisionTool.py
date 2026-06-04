@@ -9,8 +9,8 @@ class NegativeNumberError(Exception):
 
 print("--Safe Division Tool")
 while True:
-    # built in exceptions
     flag = False
+    # input first number untill user enters correct one
     while True:
         try:
             x = input("Enter first number (or 'quit' to exit): ")
@@ -18,26 +18,24 @@ while True:
                 print("Goodbye!")
                 flag = True
                 break
-            if x.isdigit():
-                x = int(x)
-                break
-            else:
-                raise  ValueError(f"Error: Please enter valid numbers!")  
-            elif x.lstrip('-').isdigit():
-                    raise NegativeNumberError(x,"Negative numbers are not allowed!") 
+            x =  int(x)
+            if x < 0:
+                raise NegativeNumberError(x,"Negative numbers are not allowed!") 
+            break
         except ValueError as e:
-            print(e) 
+            print(f"Error: Please enter valid numbers!") 
         except NegativeNumberError as e:
             print(e)   
     if flag:
         break
+    # input second number untill user enters correct one
     while True:
         try:
             y = int(input("Enter second number: "))
             if y == 0:
                 raise ZeroDivisionError("Error: Cannot divide by zero!")
             elif y < 0:
-                raise NegativeNumberError(x,"Negative numbers are not allowed!")
+                raise NegativeNumberError(y,"Negative numbers are not allowed!")
             else:
                 break
         except ValueError:
@@ -46,8 +44,7 @@ while True:
             print(e)
         except NegativeNumberError as e:
             print(e)
+   
     print(f"Result: {x/y}")
     print("Operation completed successfully")
     print()
-    
-
