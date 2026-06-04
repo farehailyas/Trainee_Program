@@ -32,20 +32,19 @@ def fibonacci_gen(limit):
         yield fib
 
 def helper(count , even , fib , *args):
-    # count down
+    # get parameters
     x , *numbers , last = args
-    print("parameters")
-    print(x)
-    print(numbers[0])
-    print(last)
     print("--Generator Playground--")
+
     ans = ""
+    # count down
     # for handles itslef otherwise we have to call generator function in next() evrytime until 1 reaches
     for i in count(x):
         ans+= f"{i} ->"
     print(f"countdown from {x}:")
     print(ans[:-2])
     print()
+
     # get even numbers
     print(f"Even numbers from {numbers[0]}: ")
     ans = ""
@@ -83,6 +82,3 @@ while True:
         print(e)
 
 helper(countdown ,even_filter , fibonacci_gen , x , numbers , y)
-
-
-
