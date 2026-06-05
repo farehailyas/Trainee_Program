@@ -1,69 +1,41 @@
-# Python Trainee Program — Week 1 Progress
+#Trainee Program | Week 1 Progress Report
+
+---
 
 ## Overview
-Completed foundational to advanced Python concepts in Week 1, with hands-on coding problems practiced for each topic.
+
+Covered all core Python fundamentals in Week 1 by writing dedicated scripts for every concept. Each topic was practiced hands-on rather than just read — every concept below has a corresponding `.py` script.
 
 ---
 
 ## Topics Covered
 
 ### Core Fundamentals
-- Variables
-- Data Types
-- Operators
-- Keywords
-- Input / Output
-- Loops
-- Conditional Statements
+Variables, data types, operators, keywords, input/output, loops, and conditional statements — all practiced through scripts covering type assignments, arithmetic/logical/comparison operators, and control flow patterns.
 
 ### Functions
-- Basic Functions
-- *args / **kwargs
-- Lambda
-- Map / Filter / Reduce
-- Inner Functions
-- First-Class Functions
-- Decorators
-- Recursion
-- Generators
+Wrote scripts covering basic functions, `*args` / `**kwargs`, lambda expressions, `map` / `filter` / `reduce`, inner functions, first-class functions, decorators, recursion, and generators.
 
-### Object-Oriented Programming (OOP)
-- Inheritance
-- Encapsulation
-- Abstraction
-- Polymorphism
+### Object-Oriented Programming
+Implemented scripts demonstrating inheritance, encapsulation, abstraction, and polymorphism — including abstract base classes and method overriding.
 
 ### Exception Handling
-- Built-in Exceptions
-- User-Defined Exceptions
+Practiced both built-in exceptions (`ValueError`, `TypeError`, `FileNotFoundError`, etc.) and user-defined custom exception classes with real-world use cases.
 
 ### Data Structures
-- Lists
-- Tuples
-- Sets
-- Dictionaries
-- Arrays
-- List Comprehension
-- Collections (heapq, deque, Counter)
+Scripts written for lists, tuples, sets, dictionaries, arrays, list comprehensions, and collections module utilities — `heapq`, `deque`, and `Counter`.
 
 ### Advanced Topics
-- Type Casting
-- Boolean Operations
-- Sync / Async
-- File Handling
-- UV Package Management
-- Runtime & Compile Time Execution
-- Memory Management (Stack & Heap)
+Covered type casting, boolean operations, sync/async programming, file handling (read/write/append), UV package management, runtime vs compile-time execution, and memory management concepts (stack vs heap).
 
 ### Libraries
-- NumPy
-- Pandas
-- Matplotlib
+Hands-on scripts using NumPy, Pandas, and Matplotlib for data manipulation and visualization.
 
-### Other
-- Project Scaffolding (PyScaffold)
+### Project Scaffolding
+Practiced structuring Python projects — folder layout, `__init__.py`, modules, and package organization.
 
 ---
 
-## Practice
-Solved coding problems for each topic to reinforce understanding and build problem-solving skills.
+## Approach
+
+Every topic was implemented by writing scripts from scratch. No copy-paste — each script was written, run, and tested manually to build understanding through practice.
