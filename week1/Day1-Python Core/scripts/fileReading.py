@@ -2,7 +2,7 @@
 
 with open("sample.txt" , "r") as textFile:
     data = textFile.read()
-    print(data)
+print(data)
 
 reading line by line
 textFile = open("sample.txt" , "r")

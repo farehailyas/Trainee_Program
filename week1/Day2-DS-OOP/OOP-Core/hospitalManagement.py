@@ -9,6 +9,9 @@ class Patient:
     def get_summary(self):
         return f"Patient Name: {self.name}, Age: {self.age}, Ailment: {self.__ailment}"
     pass
+    def __privateFunction(self):
+        print("I am a private function")
+   
 
 class Staff(ABC):
     @abstractmethod
@@ -37,7 +40,11 @@ class Nurse(Staff):
     pass
 
 # Example usage
-patient1 = Patient("Ahmad", 30, "Flu")
+patient1 = Patient("Ahmad", 30, "Flu" , perscription = "take rest")
+# perscription = patient1.getPersecription()
+# print(perscription)
+print(patient1._Patient__perscription)
+patient1._Patient__privateFunction()
 patient2 = Patient("amna", 25, "Cold")
 staff = []
 staff.append(Doctor("Ali", "Physician"))
