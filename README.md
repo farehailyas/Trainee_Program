@@ -1,4 +1,4 @@
-#Trainee Program | Week 1 Progress Report
+## Trainee Program | Week 1 Progress Report
 
 ---
 
