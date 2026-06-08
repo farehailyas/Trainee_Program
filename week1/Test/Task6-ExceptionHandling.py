@@ -1,4 +1,4 @@
-# custom exception class
+"""Part A custom exception class """
 class UsernameTooShortError(Exception):
     def __init__(self , val , msg):
         self.val = val
@@ -15,7 +15,7 @@ class WeakPasswordError (Exception):
     def __str__(self):
         return f"Error: {self.msg} Got:{self.val}"
 
-
+"""Part B built in exception """
 def safe_divide(a , b):
     try:
         x = int(a)

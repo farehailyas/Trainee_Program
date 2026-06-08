@@ -44,8 +44,5 @@ emp2 = ContractEmployee("Ali" , "CS" , 10000 , 6)
 lis = [emp1 , emp2]
 
 for i in lis:
-    if isinstance(i, FullTimeEmployee):
-        i.calculate_pay()
-    elif isinstance(i, ContractEmployee):
-        i.calculate_pay()
+    i.calculate_pay()
     
