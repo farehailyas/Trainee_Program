@@ -7,7 +7,6 @@ print(num)
 num = map(int, input().split())  # lazy rahega
 next(num)
 
-
 # apply user defined function to each element in iterable
 def double_elements(x):
     return 2*x
