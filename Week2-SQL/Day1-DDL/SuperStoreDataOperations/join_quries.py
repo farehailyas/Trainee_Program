@@ -36,4 +36,4 @@ start = time.time()
 res2 = pd.read_sql(query, connection)
 time2 = time.time() - start
 print(f"Time: {time2 * 1000:.2f} ms")
-print(f"Rows: {len(res2)}\n")
+print(f"Rows: {len(res2)}\n"
