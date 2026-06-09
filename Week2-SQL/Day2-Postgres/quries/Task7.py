@@ -14,15 +14,15 @@ def get_connection():
         print(e)
 
 """  
- Q6: This query answers: "Find sales where profit is BETWEEN 100 and 500"
-# Topics: WHERE, BETWEEN
-# Expected: order_id, profit
+ Q6: This query answers: "List all states sorted alphabetically"
+# Topics: SELECT, ORDER BY, DISTINCT
+# Expected: state (sorted A-Z, no duplicates)
 """
 def get_sales(conn):
-    query = """
-    SELECT  order_id , profit 
-            FROM sales 
-            where profit BETWEEN 100 AND 500;
+    query = """SELECT DISTINCT state
+            FROM orders
+            ORDER BY state
+    
         """
     result = pd.read_sql(query, conn)
     print(result)
