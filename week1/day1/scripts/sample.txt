@@ -1,5 +1,0 @@
-Reading a File Line by Line
-We may want to read a file line by line, especially for large files where reading the entire content at once is not practical. It is done with following two methods:
-
-for line in file: Iterates over each line in the file.
-line.strip(): Removes any leading or trailing whitespace, including newline characters.
