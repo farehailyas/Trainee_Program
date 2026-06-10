@@ -14,22 +14,23 @@ def get_connection():
         print(e)
 
 """  
-# Q2: This query answers: "Show all customers and their total orders, including customers with no orders"
-# Topics: LEFT JOIN, GROUP BY, COUNT, SUM
-# Expected: customer_name, segment, order_count, total_spending
-# KEY: All customers + matching orders (right), even if NULL
+# Q3: This query answers: "Show all orders with customer details, even if customer data is missing"
+# Topics: RIGHT JOIN, SELECT
+# Expected: order_id, order_date, customer_name, segment, region
+# KEY: All orders (right) + matching customers (left)
+# Tables: customers RIGHT JOIN orders
 """
 # join bw order and sales
-def get_customers(conn):
-    query = """ SELECT c.customer_name , c.segment , COUNT(*) as order_count
+def get_orders(conn):
+    query = """ 
+                SELECT o.order_id, o.order_date, c.customer_name, c.segment, o.region
                 FROM customers c 
-                LEFT JOIN orders o
+                RIGHT JOIN orders o
                 ON c.customer_id = o.customer_id
-                GROUP BY c.customer_id, c.customer_name, c.segment
         """
-   
+
     result = pd.read_sql(query, conn)
     print(result)
 
 conn = get_connection()
-get_customers(conn)
+get_orders(conn)

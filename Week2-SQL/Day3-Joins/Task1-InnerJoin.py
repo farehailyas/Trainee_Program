@@ -14,7 +14,6 @@ def get_connection():
         print(e)
 
 """  
-Q3: 
 # Q1: This query answers: "Show all products that have been sold with their sales details"
 # Topics: INNER JOIN, SELECT
 # Expected: product_name, category, sales_amount, quantity, profit
