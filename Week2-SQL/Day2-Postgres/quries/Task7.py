@@ -14,7 +14,7 @@ def get_connection():
         print(e)
 
 """  
- Q6: This query answers: "List all states sorted alphabetically"
+ Q7: This query answers: "List all states sorted alphabetically"
 # Topics: SELECT, ORDER BY, DISTINCT
 # Expected: state (sorted A-Z, no duplicates)
 """
