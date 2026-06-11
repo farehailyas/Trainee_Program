@@ -3,3 +3,4 @@ matplotlib
 numpy
 psycopg2-binary 
 python-dotenv
+duckdb
