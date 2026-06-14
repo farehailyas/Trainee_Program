@@ -1,23 +1,14 @@
 import pandas as pd
 import sys
 from pathlib import Path
-
+import warnings
+warnings.filterwarnings('ignore')
 sys.path.append(str(Path(__file__).parent.parent))
 from db_connection import get_dbConnection
-
-def get_connection():    
-    try:
-        conn = get_dbConnection()
-        print("Connected to db")
-        return conn
-    except Exception as e:
-        print(e)
-
-
 # join bw order and sales
 
 def get_duplicates(conn):
-    print("Get Duplicates")
+    print("========================Check Duplicates=========================")
     query = """ SELECT 'Inventory' as table_name , COUNT(*) as duplicates 
                 FROM (SELECT sku_code
                     FROM inventory 
@@ -68,7 +59,3 @@ def get_duplicates(conn):
 
     result = pd.read_sql(query, conn)
     print(result)
-
-
-conn = get_connection()
-get_duplicates(conn)
