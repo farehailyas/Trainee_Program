@@ -45,41 +45,10 @@ SQL fundamentals practiced through hands-on queries against real e-commerce data
   - Referential integrity (orphan detection)
   - Freshness check (MIN/MAX inserted_at)
 - Inserted 178,747 rows across 6 tables (no constraints, all data kept)
-- Handled NaNs properly: `tuple(None if pd.isna(v) else v for v in row)`
 
-### Data Insert & Handling
-- CSV → PostgreSQL via Pandas + psycopg2
-- All columns as TEXT (flexible data cleaning)
-- NULL detection: empty strings + NaN both converted to SQL NULL
-- Combined 2 pricing CSVs (May-2022 + P L March 2021)
-- Loaded duplicates + nulls + orphans intentionally (for later cleaning)
 
----
-
-## Deliverables
-- ✓ create_tables.py — 6 table schemas
-- ✓ insert_data.py — 178K rows loaded
-- ✓ run_pipeline.py — Quality checks automated
-- ✓ 4 quality check modules (duplicates, nulls, referential integrity, freshness)
-- ✓ README.md — Pipeline documentation
-- ✓ ERD on dbdiagram.io
-
----
-
-## Key Learnings
-- **NOT IN with NULL = empty result** → use EXCEPT or LEFT JOIN instead
-- **HAVING filters post-GROUP BY** → WHERE filters pre-GROUP BY
-- **EXCEPT removes NULLs** → safer than NOT IN for subqueries
-- **All TEXT columns** → defer type conversion to validation phase
-- **Metadata columns essential** → inserted_at, batch_id, source_file for audit
-
----
-
-## Next Steps
-- DuckDB parallel queries (analytical queries alongside PostgreSQL)
-- SQL Murder Mystery challenge
-- Clean data in staging tables + add constraints to production
-- Archive raw tables
+## Additional
+- SQL Murder Mystery challenge : https://mystery.knightlab.com/
 
 ---
 
