@@ -1,41 +1,86 @@
-## Trainee Program | Week 1 Progress Report
+## Trainee Program | Week 2 Progress Report
 
 ---
 
 ## Overview
-
-Covered all core Python fundamentals in Week 1 by writing dedicated scripts for every concept. Each topic was practiced hands-on rather than just read — every concept below has a corresponding `.py` script.
+SQL fundamentals practiced through hands-on queries against real e-commerce dataset. Every topic below has corresponding SQL queries written, tested, and documented.
 
 ---
 
 ## Topics Covered
 
-### Core Fundamentals
-Variables, data types, operators, keywords, input/output, loops, and conditional statements — all practiced through scripts covering type assignments, arithmetic/logical/comparison operators, and control flow patterns.
+### PostgreSQL & Schema Design
+- Database setup on PostgreSQL (local + Supabase)
+- 6 tables created with proper DDL (CREATE TABLE, ALTER, DROP)
+- Data types: VARCHAR, INTEGER, FLOAT, TEXT, TIMESTAMP, BOOLEAN
+- Primary keys, composite keys, constraints (NOT NULL, UNIQUE)
+- No FK constraints during raw insert (quality checks added later)
+- ERD designed on dbdiagram.io
 
-### Functions
-Wrote scripts covering basic functions, `*args` / `**kwargs`, lambda expressions, `map` / `filter` / `reduce`, inner functions, first-class functions, decorators, recursion, and generators.
+### Core Querying
+- SELECT, WHERE, ORDER BY, LIMIT, OFFSET, DISTINCT
+- Aliases, WHERE vs HAVING distinction
+- Aggregations: COUNT, SUM, AVG, MIN, MAX
+- GROUP BY with HAVING (post-grouping filter)
+- 5 real business queries written answering dataset questions
 
-### Object-Oriented Programming
-Implemented scripts demonstrating inheritance, encapsulation, abstraction, and polymorphism — including abstract base classes and method overriding.
+### Subqueries & CTEs
+- Subqueries in WHERE, FROM, SELECT clauses
+- Correlated vs non-correlated subqueries
+- CTEs (WITH clause) for readability over nested subqueries
+- Practical: Orphan detection via subqueries + CTEs
+- Issue identified: NOT IN breaks with NULL → used EXCEPT/LEFT JOIN instead
 
-### Exception Handling
-Practiced both built-in exceptions (`ValueError`, `TypeError`, `FileNotFoundError`, etc.) and user-defined custom exception classes with real-world use cases.
+### JOINs & Set Operations
+- INNER, LEFT, RIGHT, FULL OUTER, CROSS, SELF JOINs
+- UNION, UNION ALL, INTERSECT, EXCEPT
+- Referential integrity checks (orphaned SKUs in child tables)
+- Tested: LEFT JOIN returns unmatched rows; INNER JOIN excludes them
+- Example: Found 45 orphaned SKUs in product_pricing (not in inventory)
 
-### Data Structures
-Scripts written for lists, tuples, sets, dictionaries, arrays, list comprehensions, and collections module utilities — `heapq`, `deque`, and `Counter`.
+### Data Quality Pipeline
+- Built 4-check quality validation pipeline:
+  - Duplicates detection (GROUP BY + COUNT)
+  - NULL audit per column (COUNT FILTER WHERE IS NULL)
+  - Referential integrity (orphan detection)
+  - Freshness check (MIN/MAX inserted_at)
+- Inserted 178,747 rows across 6 tables (no constraints, all data kept)
+- Handled NaNs properly: `tuple(None if pd.isna(v) else v for v in row)`
 
-### Advanced Topics
-Covered type casting, boolean operations, sync/async programming, file handling (read/write/append), UV package management, runtime vs compile-time execution, and memory management concepts (stack vs heap).
-
-### Libraries
-Hands-on scripts using NumPy, Pandas, and Matplotlib for data manipulation and visualization.
-
-### Project Scaffolding
-Practiced structuring Python projects — folder layout, `__init__.py`, modules, and package organization.
+### Data Insert & Handling
+- CSV → PostgreSQL via Pandas + psycopg2
+- All columns as TEXT (flexible data cleaning)
+- NULL detection: empty strings + NaN both converted to SQL NULL
+- Combined 2 pricing CSVs (May-2022 + P L March 2021)
+- Loaded duplicates + nulls + orphans intentionally (for later cleaning)
 
 ---
 
-## Approach
+## Deliverables
+- ✓ create_tables.py — 6 table schemas
+- ✓ insert_data.py — 178K rows loaded
+- ✓ run_pipeline.py — Quality checks automated
+- ✓ 4 quality check modules (duplicates, nulls, referential integrity, freshness)
+- ✓ README.md — Pipeline documentation
+- ✓ ERD on dbdiagram.io
 
-Every topic was implemented by writing scripts from scratch. No copy-paste — each script was written, run, and tested manually to build understanding through practice.
+---
+
+## Key Learnings
+- **NOT IN with NULL = empty result** → use EXCEPT or LEFT JOIN instead
+- **HAVING filters post-GROUP BY** → WHERE filters pre-GROUP BY
+- **EXCEPT removes NULLs** → safer than NOT IN for subqueries
+- **All TEXT columns** → defer type conversion to validation phase
+- **Metadata columns essential** → inserted_at, batch_id, source_file for audit
+
+---
+
+## Next Steps
+- DuckDB parallel queries (analytical queries alongside PostgreSQL)
+- SQL Murder Mystery challenge
+- Clean data in staging tables + add constraints to production
+- Archive raw tables
+
+---
+
+**Done when:** Quality checks run seamlessly, 4-table JOIN queries written, GitHub repo populated with all SQL files.
