@@ -20,7 +20,7 @@ def get_connection():
 
 def get_products(conn):
     query = """ SELECT c.customer_name , o.order_date , LEAD( o.order_date) OVER (PARTITION BY c.customer_id ORDER BY o.order_date) 
-                as next_order_date , LAG(o.order_id) OVER(PARTITION BY c.customer_id ORDER BY o.order_date) as Next_order_id
+                as next_order_date , LEAD(o.order_id) OVER(PARTITION BY c.customer_id ORDER BY o.order_date) as Next_order_id
                 FROM customers c
                 JOIN orders o
                 ON o.customer_id = c.customer_id

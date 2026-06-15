@@ -7,20 +7,19 @@ def get_connection():
     return conn
 
 def insert_inventory(cur, connection):
-    df = pd.read_csv('data/Sale Report.csv', encoding='latin1')
-    df.columns = df.columns.str.strip()
-    df = df[['SKU Code', 'Design No.', 'Stock', 'Category', 'Size', 'Color']]
-    df.columns = ['sku_code', 'design_no', 'stock', 'category', 'size', 'color']
-    df = df.where(pd.notna(df), None)
-    df = df.replace('', None)
     
-    for _, row in df.iterrows():
-        values = tuple(None if pd.isna(v) else v for v in row)
-        cur.execute(
-            "INSERT INTO inventory (sku_code, design_no, stock, category, size, color) VALUES (%s, %s, %s, %s, %s, %s)",
-            values
-        )
-    connection.commit()
+    df = pd.read_csv("data/Sale Report.csv" , encoding = 'latin1')
+    df.columns.str.strip()
+
+    df = df[['SKU Code' , 'Design No.' , 'Stock' , 'Category' , 'Size' ,'Color']]
+    df.columns = ['sku_code' , 'design_no' , 'stock' , 'category' , 'size' , 'color']
+
+    for _ , row in df.iterrows():
+        values =  [ None if pd.isna(v) else  v for v in row ]
+        query = """INSERT INTO inventory (sku_code , design_no , stock , category , size , color) VALUES (%s ,%s ,%s, %s,%s,%s )"""
+        cur.execute(query , values)
+
+
     print(f"inventory: {len(df)} rows inserted")
 
 def insert_product_pricing(cur, connection):
@@ -39,9 +38,7 @@ def insert_product_pricing(cur, connection):
     df.columns = ['sku', 'style_id', 'catalog', 'category', 'weight', 'tp', 'mrp_old', 'final_mrp_old',
                   'ajio_mrp', 'amazon_mrp', 'amazon_fba_mrp', 'flipkart_mrp', 'limeroad_mrp',
                   'myntra_mrp', 'paytm_mrp', 'snapdeal_mrp']
-    df = df.where(pd.notna(df), None)
-    df = df.replace('', None)
-    
+ 
     for _, row in df.iterrows():
         values = tuple(None if pd.isna(v) else v for v in row)
         cur.execute(
@@ -56,16 +53,17 @@ def insert_product_pricing(cur, connection):
 def insert_amazon_sales(cur, connection):
     df = pd.read_csv('data/Amazon Sale Report.csv', encoding='latin1', low_memory=False)
     df.columns = df.columns.str.strip()
+
     df = df[['Order ID', 'Date', 'Status', 'Fulfilment', 'Sales Channel', 'ship-service-level',
              'Style', 'SKU', 'Category', 'Size', 'ASIN', 'Courier Status', 'Qty', 'currency',
              'Amount', 'ship-city', 'ship-state', 'ship-postal-code', 'ship-country',
              'promotion-ids', 'B2B', 'fulfilled-by']]
+
     df.columns = ['order_id', 'date', 'status', 'fulfilment', 'sales_channel', 'ship_service_level',
                   'style', 'sku', 'category', 'size', 'asin', 'courier_status', 'qty', 'currency',
                   'amount', 'ship_city', 'ship_state', 'ship_postal_code', 'ship_country',
                   'promotion_ids', 'b2b', 'fulfilled_by']
-    df = df.where(pd.notna(df), None)
-    df = df.replace('', None)
+    
     
     for _, row in df.iterrows():
         values = tuple(None if pd.isna(v) else v for v in row)
@@ -100,8 +98,7 @@ def insert_warehouse_comparison(cur, connection):
     df.columns = df.columns.str.strip()
     df = df[['Shiprocket', 'INCREFF']]
     df.columns = ['shiprocket', 'increff']
-    df = df.where(pd.notna(df), None)
-    df = df.replace('', None)
+   
     
     for _, row in df.iterrows():
         values = tuple(None if pd.isna(v) else v for v in row)
@@ -117,8 +114,6 @@ def insert_expenses(cur, connection):
     df.columns = df.columns.str.strip()
     df = df[['Recived Amount', 'Expance']]
     df.columns = ['received_amount', 'expense']
-    df = df.where(pd.notna(df), None)
-    df = df.replace('', None)
     
     for _, row in df.iterrows():
         values = tuple(None if pd.isna(v) else v for v in row)

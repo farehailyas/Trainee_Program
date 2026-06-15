@@ -80,3 +80,47 @@ LIMIT 10
 result = conn.execute(query).fetchdf()
 print(result)
 conn.close()
+
+def sample_query():
+    conn = duckdb.connect()
+
+    result2 = conn.execute("""
+    SELECT category, Country
+    FROM read_csv('Sample - Superstore.csv', encoding='cp1252')
+    LIMIT 5
+""").fetchall()
+
+    print(result2)
+
+sample_query()
+
+import duckdb
+
+def insert_record():
+    conn = duckdb.connect(':memory:')
+
+    # Create table from CSV
+    conn.execute("""
+        CREATE TABLE superstore AS
+        SELECT * FROM read_csv_auto('Sample - Superstore.csv', encoding='cp1252')
+    """)
+    
+    # Insert single record
+    conn.execute("""
+        INSERT INTO superstore 
+        VALUES (100, 'NEW-ORDER-001', '2024-06-15', '2024-06-20', 'Express', 'PROD-123', 'John Doe', 'Consumer', 'USA', 'New York', 'NY', 10001, 'East', 'FUR-TA-001', 'Furniture', 'Tables', 'New Table', 499.99, 2, 0.5, 249.95)
+    """)
+    
+    # Insert multiple records
+    conn.execute("""
+        INSERT INTO superstore VALUES 
+        (101, 'NEW-ORDER-002', '2024-06-15', '2024-06-20', 'Standard', 'PROD-124', 'Jane Smith', 'Corporate', 'USA', 'Boston', 'MA', 02101, 'East', 'OFF-BI-001', 'Office Supplies', 'Binders', 'Blue Binders', 19.99, 5, 0.2, 4.00),
+        (102, 'NEW-ORDER-003', '2024-06-15', '2024-06-20', 'Standard', 'PROD-125', 'Bob Wilson', 'Consumer', 'USA', 'Seattle', 'WA', 98101, 'West', 'TEC-PH-001', 'Technology', 'Phones', 'Phone', 999.99, 1, 0.1, 99.99)
+    """)
+    
+    # Verify
+    result = conn.execute("SELECT * FROM superstore LIMIT 1").fetchall()
+    df = pd.DataFrame(result)
+    print(df)
+
+insert_record()

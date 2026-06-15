@@ -19,10 +19,10 @@ for file in csv_files:
     
     # Get all columns and types
     q = f"DESCRIBE '{file}'"
-    schema = duckdb.query(q).to_df()
-    print(schema.to_string(index=False))
+    schema = duckdb.query(q)
+    print(schema)
     
-    # Also get row count
-    count_q = f"SELECT COUNT(*) as row_count FROM '{file}'"
-    count = duckdb.query(count_q).to_df()
-    print(f"\nTotal Rows: {count['row_count'][0]}")
+    # # Also get row count
+    # count_q = f"SELECT COUNT(*) as row_count FROM '{file}'"
+    # count = duckdb.query(count_q).to_df()
+    # print(f"\nTotal Rows: {count['row_count'][0]}")

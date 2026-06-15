@@ -11,11 +11,7 @@ def create_db():
     try:
         db_name = os.getenv("DB_NAME")
         temp_connection = psycopg2.connect(
-            host=os.getenv("DB_HOST"),
-            port=os.getenv("DB_PORT"),
-            database="postgres",
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD")
+           
         )
         temp_connection.autocommit = True  
         cur = temp_connection.cursor()

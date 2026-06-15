@@ -26,6 +26,8 @@ print(f"Rows: {len(res1)}\n")
 print("Indexes deleted!")
 # conn.close()
 
+""" CREATE INDEX prod_idx on PRODUCTS(product_id) """
+
 # # TEST 2: WITH INDEX
 print("TEST 2: WITH INDEX")
 cur.execute("CREATE INDEX idx_sales_product ON Sales(Product_Id)")

@@ -5,6 +5,7 @@ import warnings
 warnings.filterwarnings('ignore')
 sys.path.append(str(Path(__file__).parent.parent))
 from db_connection import get_dbConnection
+from db_connection import destroy_connection
 from check_duplicates import get_duplicates
 from check_null import get_null_coloumns 
 from check_refrential_integrity import check_refrential_integrity
@@ -32,3 +33,4 @@ def run(conn):
 
 conn = get_connection()
 run(conn)
+destroy_connection(conn)
