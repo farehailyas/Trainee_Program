@@ -1,1 +1,2 @@
-pandas
+dlt[postgres]
+dlt[sql_database]
