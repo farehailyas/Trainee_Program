@@ -1,2 +1,4 @@
 dlt[postgres]
 dlt[sql_database]
+dlt[snowflake]>=0.5.1
+

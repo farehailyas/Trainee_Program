@@ -1,2 +1,9 @@
 .venv/
 venv/
+*.dlt
+__pycache__/
+*.duckdb
+*.__pycache__
+*README.md
+*.gitignore
+*requirements.txt
