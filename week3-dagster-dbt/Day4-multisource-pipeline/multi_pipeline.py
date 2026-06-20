@@ -33,9 +33,9 @@ def load_data(
 
 def get_countries_data():
     pipeline = dlt.pipeline(
-        pipeline_name="rest_api_countries",
+        pipeline_name="test_data_noa",
         destination="snowflake",
-        dataset_name="countries_data",
+        dataset_name="noa-dataset",
     )
 
     load_info = pipeline.run(restapi_source())
