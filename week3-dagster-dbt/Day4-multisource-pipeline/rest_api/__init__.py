@@ -1,44 +1,30 @@
 import dlt
-from dlt.sources.rest_api import RESTAPIConfig, rest_api_resources
+import requests
 
-@dlt.source
-def restapi_source():
 
-    config: RESTAPIConfig = {
-        "client": {
-            "base_url": "https://www.ncei.noaa.gov/cdo-web/api/v2/",
-            "headers": {
-                "token": "rTYXIeRPAWSFjplaxAOCzJoctgGAkePL"
-            }
-        },
+@dlt.resource
+def top_story_ids():
+    print("Fetching stories ids")
+    ids = requests.get(
+        "https://hacker-news.firebaseio.com/v0/topstories.json"
+    ).json()
 
-        "resources": [
-            {
-                "name": "weather_observations",
+    for story_id in ids:
+        yield {"id": story_id}
 
-                "endpoint": {
-                    "path": "data",
-                    "params": {
-                        "datasetid": "GHCND",
-                        "startdate": "2024-01-01",
-                        "enddate": "2025-01-01",
-                        "limit": 1000
-                    },
 
-                    "data_selector": "results",
+@dlt.resource
+def stories():
+    print("Fetching stories..")
+    ids = requests.get(
+        "https://hacker-news.firebaseio.com/v0/topstories.json"
+    ).json()
+    count = 0
+    for story_id in ids:
 
-                    "paginator": {
-                        "type": "offset",
-                        "limit": 1000
-                    },
-
-                    "incremental": {
-                        "cursor_path": "date",
-                        "initial_value": "2020-01-01",
-                    }
-                }
-            }
-        ]
-    }
-
-    yield from rest_api_resources(config)
+        data = requests.get(
+            f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json"
+        ).json()
+        print("inside loop" , count)
+        count+=1 
+        yield data
