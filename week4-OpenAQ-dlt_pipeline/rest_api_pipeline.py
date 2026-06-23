@@ -17,7 +17,7 @@ def openaq_source(api_key=dlt.secrets.value):
                 base_page=1,
                 total_path=None,
                 stop_after_empty_page=True,
-                maximum_page = 20
+                maximum_page = 5
             )
         },
         "resource_defaults": {
