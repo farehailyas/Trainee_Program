@@ -1,0 +1,61 @@
+--------------------------- Extract github_reactions ---------------------------
+Resources: 0/1 (0.0%) | Time: 0.00s | Rate: 0.00/s
+
+Got 100/100 issuess, query cost 2, remaining credits: 4986
+Got 25 comments, query cost 1, remaining credits: 4985
+--------------------------- Extract github_reactions ---------------------------
+Resources: 0/1 (0.0%) | Time: 5.37s | Rate: 0.00/s
+issues: 1  | Time: 0.00s | Rate: 66576.25/s
+
+Max items limit reached: 100 >= 100
+--------------------------- Extract github_reactions ---------------------------
+Resources: 1/1 (100.0%) | Time: 5.43s | Rate: 0.18/s
+issues: 100  | Time: 0.06s | Rate: 1698.27/s
+
+--------------- Normalize github_reactions in 1782208844.3891733 ---------------
+Files: 0/1 (0.0%) | Time: 0.00s | Rate: 0.00/s
+
+--------------- Normalize github_reactions in 1782208844.3891733 ---------------
+Files: 0/1 (0.0%) | Time: 0.01s | Rate: 0.00/s
+issues: 0  | Time: 0.00s | Rate: 0.00/s
+
+--------------- Normalize github_reactions in 1782208844.3891733 ---------------
+Files: 0/1 (0.0%) | Time: 0.03s | Rate: 0.00/s
+issues: 100  | Time: 0.02s | Rate: 4161.68/s
+issues__comments: 161  | Time: 0.00s | Rate: 19861263.06/s
+
+--------------- Normalize github_reactions in 1782208844.3891733 ---------------
+Files: 0/1 (0.0%) | Time: 0.03s | Rate: 0.00/s
+issues: 100  | Time: 0.02s | Rate: 4144.77/s
+issues__comments: 161  | Time: 0.00s | Rate: 1517489.76/s
+issues__reactions: 11  | Time: 0.00s | Rate: 4194304.00/s
+
+--------------- Normalize github_reactions in 1782208844.3891733 ---------------
+Files: 0/1 (0.0%) | Time: 0.03s | Rate: 0.00/s
+issues: 100  | Time: 0.02s | Rate: 4139.13/s
+issues__comments: 161  | Time: 0.00s | Rate: 1158289.78/s
+issues__reactions: 11  | Time: 0.00s | Rate: 309646.60/s
+issues__comments__reactions: 27  | Time: 0.00s | Rate: 11324620.80/s
+
+--------------- Normalize github_reactions in 1782208844.3891733 ---------------
+Files: 1/1 (100.0%) | Time: 0.07s | Rate: 14.72/s
+issues: 100  | Time: 0.06s | Rate: 1704.72/s
+issues__comments: 161  | Time: 0.03s | Rate: 4647.80/s
+issues__reactions: 11  | Time: 0.03s | Rate: 318.50/s
+issues__comments__reactions: 27  | Time: 0.03s | Rate: 782.53/s
+
+----------------- Load github_reactions in 1782208844.3891733 ------------------
+Jobs: 0/4 (0.0%) | Time: 0.00s | Rate: 0.00/s
+
+----------------- Load github_reactions in 1782208844.3891733 ------------------
+Jobs: 0/4 (0.0%) | Time: 9.96s | Rate: 0.00/s
+
+----------------- Load github_reactions in 1782208844.3891733 ------------------
+Jobs: 1/4 (25.0%) | Time: 14.20s | Rate: 0.07/s
+
+----------------- Load github_reactions in 1782208844.3891733 ------------------
+Jobs: 3/4 (75.0%) | Time: 16.45s | Rate: 0.18/s
+
+----------------- Load github_reactions in 1782208844.3891733 ------------------
+Jobs: 4/4 (100.0%) | Time: 18.08s | Rate: 0.22/s
+
