@@ -1,3 +1,6 @@
 .venv/
 venv/
 week3-dagster-dbt
+*week4-
+*week4-github_pipeline_deployment
+*week4-OpenAQ-dlt_pipeline

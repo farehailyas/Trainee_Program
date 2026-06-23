@@ -17,7 +17,7 @@ def get_customers_without_index(conn):
     cur = conn.cursor()
     query = """ EXPLAIN ANALYZE SELECT customer_id 
                 FROM customers
-                WHERE customer_id >= '100' OR customer_id <= '500'
+                WHERE customer_id BETWEEN '100' AND '500'
         """
     result = pd.read_sql(query, conn)
     cur.close()
@@ -25,12 +25,11 @@ def get_customers_without_index(conn):
 
 def get_customers_with_index(conn):
     cur = conn.cursor()
-    query = """ EXPLAIN ANALYZE SELECT orders.region
+    query = """ EXPLAIN ANALYZE SELECT customers.customer_id , orders.customer_id
                 FROM customers
-                 JOIN orders
+                JOIN orders
                 ON customers.customer_id = orders.customer_id
                 
-                GROUP BY orders.region
         """
     result = pd.read_sql(query, conn)
     cur.close()
