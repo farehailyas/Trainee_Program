@@ -17,7 +17,7 @@ def openaq_source(api_key=dlt.secrets.value):
                 base_page=1,
                 total_path=None,
                 stop_after_empty_page=True,
-                maximum_page = 5
+                # maximum_page = 5
             )
         },
         "resource_defaults": {
@@ -31,48 +31,43 @@ def openaq_source(api_key=dlt.secrets.value):
                     "path": "v3/locations", 
                     "data_selector": "results",
                     "params": {
-                        "limit": 5,
-                        "location_ids": "38"
+                        "limit": 1000,
                     }
                 }
             },
-            {
-                "name": "sensors",
-                "primary_key": "id",
-                "endpoint": {
-                    "path": "v3/locations/{location_id}/sensors",
-                    "data_selector": "results",
-                    "params": {
-                        "location_id": {
-                            "type": "resolve",
-                            "resource": "locations",
-                            "field": "id"
-                        }
-                    }
-                },
-                # "include_from_parent": ["id"]
-            },
-            {
-                "name": "measurements",
-                "write_disposition": "append",   
-                # "include_from_parent": ["id"],
+            # {
+            #     "name": "sensors",
+            #     "primary_key": "id",
+            #     "endpoint": {
+            #         "path": "v3/locations/{location_id}/sensors",
+            #         "data_selector": "results",
+            #         "params": {
+            #             "location_id": {
+            #                 "type": "resolve",
+            #                 "resource": "locations",
+            #                 "field": "id"
+            #             }
+            #         }
+            #     },
+            #     # "include_from_parent": ["id"]
+            # },
+            # {
+            #     "name": "measurements",
+            #     "write_disposition": "append",   
+            #     # "include_from_parent": ["id"],
 
-                "endpoint": {
-                    "path": "v3/sensors/{sensor_id}/measurements",
-                    "data_selector": "results",
-                    "params": {
-                        "sensor_id": {
-                            "type": "resolve",
-                            "resource": "sensors",
-                            "field": "id"
-                        },
-                        
-                        # "date_from": "2024-01-01",
-                        # "date_to": "2024-01-07" 
-                        
-                    },
-                }
-            },
+            #     "endpoint": {
+            #         "path": "v3/sensors/{sensor_id}/measurements",
+            #         "data_selector": "results",
+            #         "params": {
+            #             "sensor_id": {
+            #                 "type": "resolve",
+            #                 "resource": "sensors",
+            #                 "field": "id"
+            #             },                
+            #         },
+            #     }
+            # },
         ],
     }
     
