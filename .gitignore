@@ -15,3 +15,7 @@ dist/
 build/
 *project.toml
 *.gitignore
+week3-dlt-pipelines
+Week2-SQL
+*.dlt
+uv.lock
