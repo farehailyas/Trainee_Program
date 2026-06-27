@@ -1,4 +1,8 @@
-change venv
-add
 dlt[snowflake]>=0.5.1
-add
+python-dotenv
+requests
+dagster_slack
+beautifulsoup4
+playwright
+tenacity
+seleniumbase

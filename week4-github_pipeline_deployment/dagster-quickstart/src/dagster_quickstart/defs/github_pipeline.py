@@ -3,9 +3,13 @@ import sys
 
 from dotenv import load_dotenv
 from pathlib import Path
+# Get repo root dynamically
+repo_root = Path(__file__).resolve().parents[3]
+print("root path " ,repo_root )
+load_dotenv(repo_root / ".env")
 
-load_dotenv(Path(__file__).resolve().parents[3] / ".env")
-sys.path.append("/home/fareha/Fareha-Training/Trainee_Program/week4-github_pipeline_deployment")
+# Add repo root to path (works both locally and in Docker)
+sys.path.insert(0, str(repo_root))
 
 from github import github_reactions, github_repo_events, github_stargazers
 

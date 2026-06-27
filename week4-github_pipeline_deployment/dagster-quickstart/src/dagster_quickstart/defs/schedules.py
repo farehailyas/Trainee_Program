@@ -9,3 +9,11 @@ github_schedule=ScheduleDefinition(
 )
 
 
+
+locations_schedule=ScheduleDefinition(
+    name="10_minutes_schedule_openaq_locations",
+    job_name="openaq_job",
+    cron_schedule="*/10 * * * *"
+)
+
+
