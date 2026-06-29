@@ -6,3 +6,11 @@ week4-github_pipeline_deployment
 week4-OpenAQ-dlt_pipeline
 sql-optimization-test
 logs
+
+target/
+snapshots/
+.vscode
+dbt_internal_packages/
+logs/
+seeds/
+dbt_project.yml
