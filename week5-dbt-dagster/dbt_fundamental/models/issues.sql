@@ -1,7 +1,0 @@
-WITH issues_comments as (
-
-    SELECT * 
-    FROM GITHUB_TO_SNOWFLAKE.DAGSTER_MULTISOURCE.ISSUES__COMMENTS
-
-)
-SELECT * FROM issues_comments

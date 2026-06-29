@@ -1,0 +1,7 @@
+sources:
+  - name: DAGSTER_MULTISOURCE
+    database: GITHUB_TO_SNOWFLAKE
+    schema: DAGSTER_MULTISOURCE
+    tables : 
+      - name: locations 
+
