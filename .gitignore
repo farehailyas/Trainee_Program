@@ -19,3 +19,5 @@ week3-dlt-pipelines
 Week2-SQL
 *.dlt
 uv.lock
+week5-dbt-dagster/
+logs/
