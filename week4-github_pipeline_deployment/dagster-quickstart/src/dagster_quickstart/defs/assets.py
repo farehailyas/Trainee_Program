@@ -25,7 +25,7 @@ def dagster_github_assets(context: AssetExecutionContext, dlt: DagsterDltResourc
     dlt_source=get_locations(),
     dlt_pipeline=dlt.pipeline(
         pipeline_name="openaq_pipeline",
-        dataset_name="dagster_multisource",
+        dataset_name="OPENAQ_DATASET_4_RESOURCE",
         destination="snowflake",
         progress="log",
     ),

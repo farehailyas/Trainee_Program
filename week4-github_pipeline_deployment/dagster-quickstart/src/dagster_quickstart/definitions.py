@@ -7,11 +7,11 @@ from .defs.sensors import trigger_openaq_sensor
 
 # modify the definition to include my job and schedules
 defs = Definitions(
-    jobs = [github_job ,openaq_job ],
-    assets=[dagster_github_assets , dagster_openaq_locations ],
+    jobs = [ openaq_job ],
+    assets=[ dagster_openaq_locations ],
     resources={
         "dlt": DagsterDltResource(),
     },
-    schedules = [github_schedule , locations_schedule],
-    sensors=[trigger_openaq_sensor]
+    schedules = [ locations_schedule],
+    # sensors=[trigger_openaq_sensor]
 )
