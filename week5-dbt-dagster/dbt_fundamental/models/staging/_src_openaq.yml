@@ -1,7 +1,8 @@
 sources:
-  - name: DAGSTER_MULTISOURCE
-    database: GITHUB_TO_SNOWFLAKE
-    schema: DAGSTER_MULTISOURCE
+  - name: OPENAQ_DATASET_4_RESOURCE
+    database: TEST_DATA
+    schema: OPENAQ_DATASET_4_RESOURCE
     tables : 
       - name: locations 
+      - name: measurements
 
