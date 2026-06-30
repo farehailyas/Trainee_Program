@@ -33,27 +33,27 @@ def openaq_source(api_key=dlt.secrets.value):
             "write_disposition": "merge"
         },
         "resources": [
-            # {"name": "locations", 
-            #     "primary_key": "id",
-            #     "endpoint": {
-            #         "path": "v3/locations", 
-            #         "data_selector": "results",
-            #         "params": {
-            #             "limit": 1000
-            #         }
-            #     }
-            # },
-
-            {"name": "countries", 
+            {"name": "locations", 
                 "primary_key": "id",
                 "endpoint": {
-                    "path": "v3/countries", 
+                    "path": "v3/locations", 
                     "data_selector": "results",
                     "params": {
                         "limit": 1000
                     }
                 }
             },
+
+            # {"name": "countries", 
+            #     "primary_key": "id",
+            #     "endpoint": {
+            #         "path": "v3/countries", 
+            #         "data_selector": "results",
+            #         "params": {
+            #             "limit": 1000
+            #         }
+            #     }
+            # },
             # {
             #     "name": "updated_locations",
             #     "primary_key": "id",
