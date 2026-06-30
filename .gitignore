@@ -76,4 +76,10 @@ week4-OpenAQ-dlt_pipeline
 week5-dbt-dagster/
 jaffle_shop
 logs
-Weekly_Tasks
+*.env
+*.vscode
+*dbt_packages
+*seeds
+*snapshots
+*target
+*dbt_project.yml
