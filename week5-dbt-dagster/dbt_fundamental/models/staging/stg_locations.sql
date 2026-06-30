@@ -18,6 +18,9 @@ SELECT
     DATETIME_FIRST__LOCAL first_measurement_local,
     DATETIME_LAST__UTC as last_measurement_utc,
     DATETIME_LAST__LOCAL last_measurement_local,
-    locality
-FROM {{source('OPENAQ_DATASET_4_RESOURCE','locations')}}
+    locality,
+    _dlt_id AS record_id,
+    ETL_LOADED_AT as etl_loaded_at   
+
+FROM {{source('openaq_dataset_4_resource','locations')}}
 

@@ -1,8 +1,38 @@
 sources:
-  - name: OPENAQ_DATASET_4_RESOURCE
-    database: TEST_DATA
-    schema: OPENAQ_DATASET_4_RESOURCE
-    tables : 
+  - name: openaq_dataset_4_resource
+    tables:
+      - name: _dlt_loads
+      - name: _dlt_pipeline_state
+      - name: _dlt_version
+      - name: countries
+      - name: countries__parameters
+      - name: dim_locations
+      - name: dim_measurements
       - name: locations 
+        config:
+          freshness:
+            warn_after : 
+              count: 24
+              period: hour 
+            error_after : 
+              count: 48
+              period: day 
+          loaded_at_field: ETL_LOADED_AT
+      - name: locations__bounds
+      - name: locations__instruments
+      - name: locations__licenses
+      - name: locations__sensors
       - name: measurements
-
+        config:
+          freshness:
+            warn_after : 
+              count: 24
+              period: day
+            error_after : 
+              count: 48
+              period: day
+          
+          loaded_at_field: ETL_LOADED_AT
+      - name: owner
+      - name: sensors
+     
