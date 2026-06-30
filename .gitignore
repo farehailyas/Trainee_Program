@@ -33,4 +33,8 @@ __pycache__/
 
 # C extensions
 *.so
+week5-dbt-dagster
+jaffle_shop
+logs
+
 
