@@ -1,0 +1,27 @@
+FROM python:3.12-slim
+
+
+RUN pip install \
+    dagster \
+    dagster-postgres \
+    dagster-docker \
+    dagster-dlt \
+    dlt \
+    dlt[snowflake]
+
+WORKDIR /opt/dagster/app
+COPY . /opt/dagster/app
+
+# DEBUG
+RUN echo "=== Contents of /opt/dagster/app ===" && ls -la /opt/dagster/app/
+RUN echo "=== Contents of src ===" && ls -la /opt/dagster/app/src/
+RUN echo "=== Contents of src/dagster_quickstart ===" && ls -la /opt/dagster/app/src/dagster_quickstart/
+RUN echo "=== definitions.py ===" && cat /opt/dagster/app/src/dagster_quickstart/definitions.py
+
+EXPOSE 4000
+
+HEALTHCHECK --timeout=1s --start-period=3s --interval=3s --retries=20 CMD ["dagster", "api", "grpc-health-check", "-p", "4000"]
+
+# CMD ["dagster", "code-server", "start", "-h", "0.0.0.0", "-p", "4000", "-f", "src/dagster_quickstart/definitions.py"]
+
+CMD ["dagster", "code-server", "start", "-h", "0.0.0.0", "-p", "4000", "-m", "src.dagster_quickstart.definitions"]

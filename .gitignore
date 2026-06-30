@@ -1,20 +1,79 @@
 .venv/
 venv/
+week3-dagster-dbt
+*.dg
+*config.toml
+*.tmp_dagste
+*.temp
+.tmp/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+node_modules/
+dist/
+build/
+*project.toml
+*.gitignore
+week3-dlt-pipelines
+Week2-SQL
+*.dlt
+uv.lock
+week5-dbt-dagster/
+logs/
+jaffle_shop/
+Weekly_Tasks/week3(DLT)/
+week4-OpenAQ-dlt_pipeline/
+week3-dlt-pipelines/Day1-dlt/.dlt/
+__pycache__/
+*.duckdb
+*.__pycache__
+*README.md
+*.gitignore
+*requirements.txt
+/Week2-SQL
+week4-github_pipeline_deployment
+week4-OpenAQ-dlt_pipeline
+*.dlt
+# dlt-specific ignores
+# secrets and credentials
+secrets.toml
+*.secrets.toml
+# ignore pinned profile name
+.dlt/profile-name
+# ignore default state dir (pipeline state, working files)
+.dlt/state
+# ignore default data dir (local destination data)
+.dlt/data
+# ignore duckdb
+*.duckdb
+*.wal
+# Git repository
+.git/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# C extensions
+*.so
+week5-dbt-dagster
+jaffle_shop
+logs
+
+
+week3-dagster-dbt
+*week4-dagster
+*week4-github_pipeline_deployment
+*week4-OpenAQ-dlt_pipeline
+Week2-SQL/.env
+week5-dbt-dagster
+week3-dlt-pipelines
 Week2-SQL
 week3-dlt-pipelines
 week4-github_pipeline_deployment
 week4-OpenAQ-dlt_pipeline
+week5-dbt-dagster/
 sql-optimization-test
+jaffle_shop
 logs
-
-target/
-snapshots/
-.vscode
-dbt_internal_packages/
-logs/
-seeds/
-dbt_project.yml
-jaffle_shop/
-*dbt_packages/
-week4(DLT+Dagster+Docker)
-week3(DLT)
