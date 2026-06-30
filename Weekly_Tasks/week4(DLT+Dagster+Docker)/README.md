@@ -1,37 +1,57 @@
-# Trainee Program | Week 4 Progress Report
+# GitHub + OpenAQ ETL Pipeline | Dagster & Docker
 
-## Overview
-Deployed dlt pipelines on Dagster and containerized with Docker. Built multi-source ETL (GitHub + OpenAQ) with orchestration.
+Multi-source ETL pipeline orchestrated with Dagster, containerized with Docker, and deployed to Snowflake.
 
-## Topics Covered
+**Topics:** dlt assets, Dagster orchestration, GitHub + OpenAQ sources, Docker, Snowflake.
 
-### Dagster Integration
-- Assets (`@dlt_asset`), jobs, schedules, sensors using dlt resources
-- Asset definitions 
-- Dagster UI for pipeline monitoring
+---
 
-### Pipeline Orchestration
-- GitHub source: repos → events, stargazers, reactions
-- OpenAQ source: locations → sensors → measurements
-- Merge strategy for historical loads
-- Snowflake destination with schema management
+## Quick Start
 
-### Dockerization
-- Multi-container setup: user code, webserver, daemon, PostgreSQL
-- `Dockerfile_user_code`: packages pipeline code + dependencies
-- `Dockerfile_dagster`: Dagster orchestration layer
-- `docker-compose.yaml`: container orchestration
-- `dagster.yaml`: PostgreSQL run storage, schedule storage, DockerRunLauncher
-- `workspace.yaml`: code location registration
+### Prerequisites
+- Docker & Docker Compose installed
+- `.env` file with dlt credentials (GitHub API key, OpenAQ)
 
-### Deployment Configuration
-- Environment variables for Snowflake credentials (user, password, account, warehouse, database)
-- dlt credentials via `.env`
-- Module-based code loading (`-m src.dagster_quickstart.definitions`)
-- Dynamic path resolution for multi-package imports
+### Run Dockerized Pipeline
 
-## Projects
-- Full GitHub + OpenAQ ETL pipeline
-- Scheduled runs with Dagster daemon
-- Docker containers for dev/prod parity
-- Web UI monitoring on port 3000
+```bash
+cd github-openq_pipeline/dagster-quickstart
+docker-compose up
+```
+Open **http://localhost:3000** → Dagster UI to trigger or schedule runs.
+
+---
+
+## What Happens
+
+`docker-compose up` spins up:
+- ✅ PostgreSQL (run & schedule storage)
+- ✅ Dagster webserver (UI on port 3000)
+- ✅ Dagster daemon (runs scheduled jobs)
+- ✅ User code container (your pipeline)
+
+---
+## Configuration
+### `.env` (dlt credentials)
+```
+GITHUB_API_KEY=your_github_token
+OPENAQ_API_KEY=your_openaq_key
+
+### Orchestration
+- **Jobs:** Materialize all assets on schedule
+- **Schedules:** Daily (or custom interval)
+- **Sensors:** Event-driven triggers (optional)
+
+### Destination
+- **Snowflake:** Schema per source (github_data, openaq_data)
+- **Merge Strategy:** Historical + incremental loads
+
+---
+
+## Running Pipelines
+
+### Option 1: Docker (Production)
+```bash
+docker-compose up
+```
+Then trigger from Dagster UI (http://localhost:3000).
