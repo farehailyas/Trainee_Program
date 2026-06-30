@@ -6,7 +6,7 @@ stripe<16,>=5.0.0
 pandas
 python-dotenv
 requests
-dagster_slack
+dagster-slack
 beautifulsoup4
 playwright
 tenacity

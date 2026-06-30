@@ -36,7 +36,7 @@ def openaq_source(api_key=dlt.secrets.value):
             {"name": "locations", 
                 "primary_key": "id",
                 "endpoint": {
-                    "path": "v3/locations", 
+                    "path": "v3/locaon", 
                     "data_selector": "results",
                     "params": {
                         "limit": 1000

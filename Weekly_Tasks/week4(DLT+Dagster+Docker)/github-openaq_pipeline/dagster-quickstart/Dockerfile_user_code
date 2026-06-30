@@ -7,7 +7,8 @@ RUN pip install \
     dagster-docker \
     dagster-dlt \
     dlt \
-    dlt[snowflake]
+    dlt[snowflake]\
+    dagster-slack
 
 WORKDIR /opt/dagster/app
 COPY . /opt/dagster/app

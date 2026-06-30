@@ -3,7 +3,7 @@ from dagster import Definitions, load_assets_from_modules , define_asset_job , S
 from dagster_dlt import DagsterDltResource 
 from .defs.jobs import github_job , openaq_job
 from .defs.schedules import github_schedule ,locations_schedule
-from .defs.sensors import trigger_openaq_sensor
+from .defs.sensors import slack_on_run_failure, slack_on_run_canceled
 
 # modify the definition to include my job and schedules
 defs = Definitions(
@@ -13,5 +13,5 @@ defs = Definitions(
         "dlt": DagsterDltResource(),
     },
     schedules = [ locations_schedule],
-    # sensors=[trigger_openaq_sensor]
+    sensors=[slack_on_run_failure, slack_on_run_canceled] 
 )
