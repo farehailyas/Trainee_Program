@@ -1,10 +1,12 @@
-# GitHub + OpenAQ ETL Pipeline | Dagster & Docker
+# Trainee Program | Week 4 Progress Report
 
-Multi-source ETL pipeline orchestrated with Dagster, containerized with Docker, and deployed to Snowflake.
+## Overview
+Deployed dlt pipelines on Dagster and containerized with Docker. Built multi-source ETL (GitHub + OpenAQ) with orchestration.
 
-**Topics:** dlt assets, Dagster orchestration, GitHub + OpenAQ sources, Docker, Snowflake.
-
----
+learned about assets , jobs , definitions and sensors
+Created two assets and jobs which materializes github and openAQ rest_api 
+Created a sensor which triggers a job when an asset is materialize
+Wrap everything up in definitons to run the pipeline
 
 ## Quick Start
 
@@ -24,11 +26,11 @@ Open **http://localhost:3000** → Dagster UI to trigger or schedule runs.
 
 ## What Happens
 
-`docker-compose up` spins up:
-- ✅ PostgreSQL (run & schedule storage)
-- ✅ Dagster webserver (UI on port 3000)
-- ✅ Dagster daemon (runs scheduled jobs)
-- ✅ User code container (your pipeline)
+`docker-compose up`:
+- PostgreSQL (run & schedule storage)
+- Dagster webserver (UI on port 3000)
+- Dagster daemon (runs scheduled jobs)
+- User code container (your pipeline)
 
 ---
 ## Configuration
@@ -36,22 +38,3 @@ Open **http://localhost:3000** → Dagster UI to trigger or schedule runs.
 ```
 GITHUB_API_KEY=your_github_token
 OPENAQ_API_KEY=your_openaq_key
-
-### Orchestration
-- **Jobs:** Materialize all assets on schedule
-- **Schedules:** Daily (or custom interval)
-- **Sensors:** Event-driven triggers (optional)
-
-### Destination
-- **Snowflake:** Schema per source (github_data, openaq_data)
-- **Merge Strategy:** Historical + incremental loads
-
----
-
-## Running Pipelines
-
-### Option 1: Docker (Production)
-```bash
-docker-compose up
-```
-Then trigger from Dagster UI (http://localhost:3000).
