@@ -83,9 +83,6 @@ def read_data(conn):
     """
     result = pd.read_sql(query,conn)
     print(result)
-   
-    
-
 
 # create_table(conn)
 # insert_data(conn)

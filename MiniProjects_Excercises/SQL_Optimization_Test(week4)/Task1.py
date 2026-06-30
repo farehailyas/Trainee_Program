@@ -17,19 +17,6 @@ def create_index(conn):
     cur.close()
     print("Index created")
 
-def get_year(conn):
-    cur = conn.cursor()
-    
-    query =  """SELECT EXTRACT(YEAR FROM olist_orders_dataset.order_purchase_timestamp) , COUNT(*) as count_data
-                FROM olist_orders_dataset
-                GROUP BY EXTRACT(YEAR FROM olist_orders_dataset.order_purchase_timestamp) 
-                """
-    result = pd.read_sql(query , conn)
-    print(result)
-    # cur.execute(query)
-    # result = cur.fetchall()      
-    # print("\n".join([row[0] for row in result]))
-
 """Current situation : have 100k records , and data is of 3 years , make yearly partitions to get data in years.
 After that the performance bottleneck was nesting during joining order_items and order table , so indexed inner table(order_items) on join key and 
 products table to find category which reduces the cost to 0.01 seconds  """
@@ -65,12 +52,6 @@ def get_monthly_report(conn):
                 GROUP BY olist_products_dataset.product_category_name  , EXTRACT(MONTH FROM olist_orders_datasetwith_partition.order_purchase_timestamp) 
                 ORDER BY month ,  olist_products_dataset.product_category_name  
             """
-
-    # query = """ SELECT olist_products_dataset.product_category_name , COUNT(*) as count
-    #             FROM olist_products_dataset
-    #             GROUP BY olist_products_dataset.product_category_name  
-    #         """
-    
     result = pd.read_sql(query , conn)
     print(result)
 
