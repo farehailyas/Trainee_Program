@@ -16,3 +16,5 @@ seeds/
 dbt_project.yml
 jaffle_shop/
 *dbt_packages/
+week4(DLT+Dagster+Docker)
+week3(DLT)
