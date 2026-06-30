@@ -29,13 +29,4 @@ Scripts written for lists, tuples, sets, dictionaries, arrays, list comprehensio
 Covered type casting, boolean operations, sync/async programming, file handling (read/write/append), UV package management, runtime vs compile-time execution, and memory management concepts (stack vs heap).
 
 ### Libraries
-Hands-on scripts using NumPy, Pandas, and Matplotlib for data manipulation and visualization.
-
-### Project Scaffolding
-Practiced structuring Python projects — folder layout, `__init__.py`, modules, and package organization.
-
----
-
-## Approach
-
-Every topic was implemented by writing scripts from scratch. No copy-paste — each script was written, run, and tested manually to build understanding through practice.
+scripts using NumPy, Pandas, and Matplotlib for data manipulation and visualization.
