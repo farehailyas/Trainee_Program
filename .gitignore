@@ -1,2 +1,10 @@
 .venv/
 venv/
+Week2-SQL
+week3-dlt-pipelines
+week4-github_pipeline_deployment
+week4-OpenAQ-dlt_pipeline
+week5-dbt-dagster/
+sql-optimization-test
+jaffle_shop
+logs
