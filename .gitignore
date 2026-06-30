@@ -8,7 +8,7 @@ week3-dagster-dbt
 .tmp/
 __pycache__/
 *.pyc
-.env
+*.env
 .DS_Store
 node_modules/
 dist/
