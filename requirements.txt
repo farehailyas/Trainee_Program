@@ -1,5 +1,9 @@
-pandas
+dlt[postgres]
+dlt[sql_database]
 dlt[snowflake]>=0.5.1
+stripe<16,>=5.0.0
+
+pandas
 python-dotenv
 requests
 dagster_slack
@@ -7,3 +11,8 @@ beautifulsoup4
 playwright
 tenacity
 seleniumbase
+matplotlib
+numpy
+psycopg2-binary 
+python-dotenv
+duckdb
