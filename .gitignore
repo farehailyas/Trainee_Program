@@ -1,5 +1,43 @@
 .venv/
 venv/
+week3-dlt-pipelines/Day1-dlt/.dlt/
+__pycache__/
+*.duckdb
+*.__pycache__
+*README.md
+*.gitignore
+*requirements.txt
+/Week2-SQL
+week4-github_pipeline_deployment
+week4-OpenAQ-dlt_pipeline
+*.dlt
+# dlt-specific ignores
+# secrets and credentials
+secrets.toml
+*.secrets.toml
+# ignore pinned profile name
+.dlt/profile-name
+# ignore default state dir (pipeline state, working files)
+.dlt/state
+# ignore default data dir (local destination data)
+.dlt/data
+# ignore duckdb
+*.duckdb
+*.wal
+# Git repository
+.git/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# C extensions
+*.so
+week5-dbt-dagster
+jaffle_shop
+logs
+
+
 week3-dagster-dbt
 *week4-dagster
 *week4-github_pipeline_deployment
