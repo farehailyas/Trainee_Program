@@ -1,1 +1,9 @@
 pandas
+dlt[snowflake]>=0.5.1
+python-dotenv
+requests
+dagster_slack
+beautifulsoup4
+playwright
+tenacity
+seleniumbase
