@@ -7,7 +7,7 @@ SELECT
     IS_MONITOR as is_active_monitor,
     COORDINATES__LATITUDE as latitude,
     COORDINATES__LONGITUDE as longitude,
-    COUNTRY__ID as countrty_id,
+    COUNTRY__ID as country_id,
     COUNTRY__NAME as country_name,
     COUNTRY__CODE as country_code,
     PROVIDER__ID as provider_id,

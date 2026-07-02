@@ -12,7 +12,6 @@ renamed as (
         name as instrument_name,
         _dlt_parent_id as location_id,
         _dlt_id as record_id
-
     from source
 
 )

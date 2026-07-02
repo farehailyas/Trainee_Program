@@ -1,0 +1,29 @@
+models:
+  - name: stg_locations
+    columns:
+        - name: location_id
+          data_tests:
+            - unique 
+            - not_null
+        - name: is_active_monitor
+          data_tests:
+            - accepted_values :
+                arguments :
+                  values : ['TRUE' , 'FALSE']
+
+  - name: stg_measurements
+    columns:
+        - name: parameter_id
+          data_tests:
+            - not_null
+            - relationships :
+                arguments: 
+                  to : ref('stg_location_sensors')
+                  field: parameter_id
+  - name: stg_location_sensors
+    columns:
+      - name: parameter_id
+        data_tests:
+          - not_null
+        
+            
