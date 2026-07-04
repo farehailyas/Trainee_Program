@@ -9,6 +9,11 @@ sources:
       - name: dim_locations
       - name: dim_measurements
       - name: locations 
+        columns:
+          - name: ID
+            data_tests:
+              - unique 
+              - not_null
         config:
           freshness:
             warn_after : 
@@ -36,3 +41,13 @@ sources:
       - name: owner
       - name: sensors
      
+
+# -- build command
+# -- dbt build
+# -- dbt run
+# -- dbt test
+# -- dbt seed
+# -- dbt snapshots
+# -- test at each layer and then move to next 
+# -- if test passed then move t next layer
+# -- Saves Costs: If a model fails its tests, dbt automatically skips building any downstream models that depend on it.

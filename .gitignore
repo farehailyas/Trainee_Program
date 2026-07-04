@@ -28,9 +28,8 @@ week3-dlt-pipelines/Day1-dlt/.dlt/
 __pycache__/
 *.duckdb
 *.__pycache__
-*README.md
 *.gitignore
-*requirements.txt
+# *requirements.txt
 /Week2-SQL
 week4-github_pipeline_deployment
 week4-OpenAQ-dlt_pipeline
@@ -60,7 +59,8 @@ __pycache__/
 week5-dbt-dagster
 jaffle_shop
 logs
-
+week3-quality-checker/
+sql-optimization-test/
 
 week3-dagster-dbt
 *week4-dagster
@@ -76,6 +76,25 @@ week4-OpenAQ-dlt_pipeline
 week5-dbt-dagster/
 jaffle_shop
 logs
+
+logs
+
+target/
+snapshots/
+.vscode
+dbt_internal_packages/
+logs/
+seeds/
+dbt_project.yml
+jaffle_shop/
+*dbt_packages/
+week4(DLT+Dagster+Docker)
+week3(DLT)
+MiniProjects_Excercises/QualityChecker_EcommerceSalesData(week2)/
+SQL_Optimization_Test(week4)/
+sql-optimization-test
+week3-quality-checker
+analyses
 *.env
 *.vscode
 *dbt_packages
