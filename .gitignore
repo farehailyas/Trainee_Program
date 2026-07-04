@@ -8,7 +8,7 @@ week3-dagster-dbt
 .tmp/
 __pycache__/
 *.pyc
-.env
+*.env
 .DS_Store
 node_modules/
 dist/
@@ -74,7 +74,6 @@ week3-dlt-pipelines
 week4-github_pipeline_deployment
 week4-OpenAQ-dlt_pipeline
 week5-dbt-dagster/
-sql-optimization-test
 jaffle_shop
 logs
 
@@ -96,3 +95,10 @@ SQL_Optimization_Test(week4)/
 sql-optimization-test
 week3-quality-checker
 analyses
+*.env
+*.vscode
+*dbt_packages
+*seeds
+*snapshots
+*target
+*dbt_project.yml
