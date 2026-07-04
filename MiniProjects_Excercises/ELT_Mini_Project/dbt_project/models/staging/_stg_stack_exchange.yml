@@ -1,0 +1,34 @@
+models:
+  - name: stg_users
+    columns:
+      - name: user_id
+        data_tests:
+          - unique
+          - not_null            
+  - name: stg_questions
+    columns:
+      - name: question_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_answers
+    columns:
+      - name: answer_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_comments
+    columns:
+      - name: comment_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_badges
+    columns:
+      - name: badge_id
+        data_tests:
+          - unique
+          - not_null

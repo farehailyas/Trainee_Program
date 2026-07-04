@@ -91,6 +91,8 @@ jaffle_shop/
 *dbt_packages/
 week4(DLT+Dagster+Docker)
 week3(DLT)
-MiniProjects_Excercises
+MiniProjects_Excercises/QualityChecker_EcommerceSalesData(week2)/
+SQL_Optimization_Test(week4)/
 sql-optimization-test
 week3-quality-checker
+analyses

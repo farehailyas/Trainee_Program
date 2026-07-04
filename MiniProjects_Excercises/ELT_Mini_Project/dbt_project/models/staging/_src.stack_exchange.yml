@@ -1,0 +1,25 @@
+sources:
+  - name: raw_stackexchange
+    database: rest_api_stackexchange
+    schema: raw_stackexchange
+    tables:
+      - name: users
+      - name: tags
+      - name: badges
+      - name: questions
+      - name: answers
+      - name: comments
+      - name: posts
+      - name: answers__posted_by_collectives
+      - name: answers__posted_by_collectives__external_links
+      - name: answers__posted_by_collectives__tags
+      - name: questions__migrated_from__other_site__aliases
+      - name: questions__migrated_from__other_site__markdown_extensions
+      - name: questions__migrated_from__other_site__related_sites
+      - name: questions__tags
+      - name: tags__collectives
+      - name: tags__collectives__external_links
+      - name: tags__collectives__tags
+      - name: users__collectives
+      - name: users__collectives__collective__external_links
+      - name: users__collectives__collective__tags

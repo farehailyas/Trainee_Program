@@ -1,0 +1,573 @@
+
+============================================================
+TABLE: _dlt_loads
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+load_id                                  VARCHAR             
+schema_name                              VARCHAR             
+status                                   BIGINT              
+inserted_at                              TIMESTAMP WITH TIME ZONE
+schema_version_hash                      VARCHAR             
+
+============================================================
+TABLE: _dlt_pipeline_state
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+version                                  BIGINT              
+engine_version                           BIGINT              
+pipeline_name                            VARCHAR             
+state                                    VARCHAR             
+created_at                               TIMESTAMP WITH TIME ZONE
+version_hash                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: _dlt_version
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+version                                  BIGINT              
+version                                  BIGINT              
+engine_version                           BIGINT              
+engine_version                           BIGINT              
+inserted_at                              TIMESTAMP WITH TIME ZONE
+inserted_at                              TIMESTAMP WITH TIME ZONE
+schema_name                              VARCHAR             
+schema_name                              VARCHAR             
+version_hash                             VARCHAR             
+version_hash                             VARCHAR             
+schema                                   VARCHAR             
+schema                                   VARCHAR             
+
+============================================================
+TABLE: answers
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+is_accepted                              BOOLEAN             
+is_accepted                              BOOLEAN             
+score                                    BIGINT              
+score                                    BIGINT              
+last_activity_date                       BIGINT              
+last_activity_date                       BIGINT              
+creation_date                            BIGINT              
+creation_date                            BIGINT              
+answer_id                                BIGINT              
+answer_id                                BIGINT              
+question_id                              BIGINT              
+question_id                              BIGINT              
+content_license                          VARCHAR             
+content_license                          VARCHAR             
+owner__account_id                        BIGINT              
+owner__account_id                        BIGINT              
+owner__reputation                        BIGINT              
+owner__reputation                        BIGINT              
+owner__user_id                           BIGINT              
+owner__user_id                           BIGINT              
+owner__user_type                         VARCHAR             
+owner__user_type                         VARCHAR             
+owner__accept_rate                       BIGINT              
+owner__accept_rate                       BIGINT              
+owner__profile_image                     VARCHAR             
+owner__profile_image                     VARCHAR             
+owner__display_name                      VARCHAR             
+owner__display_name                      VARCHAR             
+owner__link                              VARCHAR             
+owner__link                              VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+last_edit_date                           BIGINT              
+last_edit_date                           BIGINT              
+community_owned_date                     BIGINT              
+community_owned_date                     BIGINT              
+
+============================================================
+TABLE: answers__posted_by_collectives
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+description                              VARCHAR             
+description                              VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+name                                     VARCHAR             
+name                                     VARCHAR             
+slug                                     VARCHAR             
+slug                                     VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: answers__posted_by_collectives__external_links
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+type                                     VARCHAR             
+type                                     VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: answers__posted_by_collectives__tags
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+value                                    VARCHAR             
+value                                    VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: badges
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+badge_type                               VARCHAR             
+badge_type                               VARCHAR             
+award_count                              BIGINT              
+award_count                              BIGINT              
+rank                                     VARCHAR             
+rank                                     VARCHAR             
+badge_id                                 BIGINT              
+badge_id                                 BIGINT              
+link                                     VARCHAR             
+link                                     VARCHAR             
+name                                     VARCHAR             
+name                                     VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: comments
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+edited                                   BOOLEAN             
+edited                                   BOOLEAN             
+score                                    BIGINT              
+score                                    BIGINT              
+creation_date                            BIGINT              
+creation_date                            BIGINT              
+post_id                                  BIGINT              
+post_id                                  BIGINT              
+comment_id                               BIGINT              
+comment_id                               BIGINT              
+content_license                          VARCHAR             
+content_license                          VARCHAR             
+reply_to_user__account_id                BIGINT              
+reply_to_user__account_id                BIGINT              
+reply_to_user__reputation                BIGINT              
+reply_to_user__reputation                BIGINT              
+reply_to_user__user_id                   BIGINT              
+reply_to_user__user_id                   BIGINT              
+reply_to_user__user_type                 VARCHAR             
+reply_to_user__user_type                 VARCHAR             
+reply_to_user__profile_image             VARCHAR             
+reply_to_user__profile_image             VARCHAR             
+reply_to_user__display_name              VARCHAR             
+reply_to_user__display_name              VARCHAR             
+reply_to_user__link                      VARCHAR             
+reply_to_user__link                      VARCHAR             
+owner__account_id                        BIGINT              
+owner__account_id                        BIGINT              
+owner__reputation                        BIGINT              
+owner__reputation                        BIGINT              
+owner__user_id                           BIGINT              
+owner__user_id                           BIGINT              
+owner__user_type                         VARCHAR             
+owner__user_type                         VARCHAR             
+owner__profile_image                     VARCHAR             
+owner__profile_image                     VARCHAR             
+owner__display_name                      VARCHAR             
+owner__display_name                      VARCHAR             
+owner__link                              VARCHAR             
+owner__link                              VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+owner__accept_rate                       BIGINT              
+owner__accept_rate                       BIGINT              
+reply_to_user__accept_rate               BIGINT              
+reply_to_user__accept_rate               BIGINT              
+
+============================================================
+TABLE: questions
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+is_answered                              BOOLEAN             
+is_answered                              BOOLEAN             
+view_count                               BIGINT              
+view_count                               BIGINT              
+answer_count                             BIGINT              
+answer_count                             BIGINT              
+score                                    BIGINT              
+score                                    BIGINT              
+last_activity_date                       BIGINT              
+last_activity_date                       BIGINT              
+creation_date                            BIGINT              
+creation_date                            BIGINT              
+question_id                              BIGINT              
+question_id                              BIGINT              
+content_license                          VARCHAR             
+content_license                          VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+title                                    VARCHAR             
+title                                    VARCHAR             
+owner__account_id                        BIGINT              
+owner__account_id                        BIGINT              
+owner__reputation                        BIGINT              
+owner__reputation                        BIGINT              
+owner__user_id                           BIGINT              
+owner__user_id                           BIGINT              
+owner__user_type                         VARCHAR             
+owner__user_type                         VARCHAR             
+owner__accept_rate                       BIGINT              
+owner__accept_rate                       BIGINT              
+owner__profile_image                     VARCHAR             
+owner__profile_image                     VARCHAR             
+owner__display_name                      VARCHAR             
+owner__display_name                      VARCHAR             
+owner__link                              VARCHAR             
+owner__link                              VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+last_edit_date                           BIGINT              
+last_edit_date                           BIGINT              
+accepted_answer_id                       BIGINT              
+accepted_answer_id                       BIGINT              
+closed_date                              BIGINT              
+closed_date                              BIGINT              
+closed_reason                            VARCHAR             
+closed_reason                            VARCHAR             
+protected_date                           BIGINT              
+protected_date                           BIGINT              
+migrated_from__on_date                   BIGINT              
+migrated_from__on_date                   BIGINT              
+migrated_from__question_id               BIGINT              
+migrated_from__question_id               BIGINT              
+migrated_from__other_site__launch_date   BIGINT              
+migrated_from__other_site__launch_date   BIGINT              
+migrated_from__other_site__open_beta_date BIGINT              
+migrated_from__other_site__open_beta_date BIGINT              
+migrated_from__other_site__closed_beta_date BIGINT              
+migrated_from__other_site__closed_beta_date BIGINT              
+migrated_from__other_site__site_state    VARCHAR             
+migrated_from__other_site__site_state    VARCHAR             
+migrated_from__other_site__high_resolution_icon_url VARCHAR             
+migrated_from__other_site__high_resolution_icon_url VARCHAR             
+migrated_from__other_site__favicon_url   VARCHAR             
+migrated_from__other_site__favicon_url   VARCHAR             
+migrated_from__other_site__icon_url      VARCHAR             
+migrated_from__other_site__icon_url      VARCHAR             
+migrated_from__other_site__audience      VARCHAR             
+migrated_from__other_site__audience      VARCHAR             
+migrated_from__other_site__site_url      VARCHAR             
+migrated_from__other_site__site_url      VARCHAR             
+migrated_from__other_site__api_site_parameter VARCHAR             
+migrated_from__other_site__api_site_parameter VARCHAR             
+migrated_from__other_site__logo_url      VARCHAR             
+migrated_from__other_site__logo_url      VARCHAR             
+migrated_from__other_site__name          VARCHAR             
+migrated_from__other_site__name          VARCHAR             
+migrated_from__other_site__site_type     VARCHAR             
+migrated_from__other_site__site_type     VARCHAR             
+migrated_from__other_site__styling__tag_background_color VARCHAR             
+migrated_from__other_site__styling__tag_background_color VARCHAR             
+migrated_from__other_site__styling__tag_foreground_color VARCHAR             
+migrated_from__other_site__styling__tag_foreground_color VARCHAR             
+migrated_from__other_site__styling__link_color VARCHAR             
+migrated_from__other_site__styling__link_color VARCHAR             
+community_owned_date                     BIGINT              
+community_owned_date                     BIGINT              
+locked_date                              BIGINT              
+locked_date                              BIGINT              
+
+============================================================
+TABLE: questions__migrated_from__other_site__aliases
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+value                                    VARCHAR             
+value                                    VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: questions__migrated_from__other_site__markdown_extensions
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+value                                    VARCHAR             
+value                                    VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: questions__migrated_from__other_site__related_sites
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+relation                                 VARCHAR             
+relation                                 VARCHAR             
+api_site_parameter                       VARCHAR             
+api_site_parameter                       VARCHAR             
+site_url                                 VARCHAR             
+site_url                                 VARCHAR             
+name                                     VARCHAR             
+name                                     VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: questions__tags
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+value                                    VARCHAR             
+value                                    VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: tags
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+has_synonyms                             BOOLEAN             
+has_synonyms                             BOOLEAN             
+is_moderator_only                        BOOLEAN             
+is_moderator_only                        BOOLEAN             
+is_required                              BOOLEAN             
+is_required                              BOOLEAN             
+count                                    BIGINT              
+count                                    BIGINT              
+name                                     VARCHAR             
+name                                     VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: tags__collectives
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+description                              VARCHAR             
+description                              VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+name                                     VARCHAR             
+name                                     VARCHAR             
+slug                                     VARCHAR             
+slug                                     VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: tags__collectives__external_links
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+type                                     VARCHAR             
+type                                     VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: tags__collectives__tags
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+value                                    VARCHAR             
+value                                    VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: users
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+account_id                               BIGINT              
+account_id                               BIGINT              
+is_employee                              BOOLEAN             
+is_employee                              BOOLEAN             
+last_modified_date                       BIGINT              
+last_modified_date                       BIGINT              
+last_access_date                         BIGINT              
+last_access_date                         BIGINT              
+reputation_change_year                   BIGINT              
+reputation_change_year                   BIGINT              
+reputation_change_quarter                BIGINT              
+reputation_change_quarter                BIGINT              
+reputation_change_month                  BIGINT              
+reputation_change_month                  BIGINT              
+reputation_change_week                   BIGINT              
+reputation_change_week                   BIGINT              
+reputation_change_day                    BIGINT              
+reputation_change_day                    BIGINT              
+reputation                               BIGINT              
+reputation                               BIGINT              
+creation_date                            BIGINT              
+creation_date                            BIGINT              
+user_type                                VARCHAR             
+user_type                                VARCHAR             
+user_id                                  BIGINT              
+user_id                                  BIGINT              
+website_url                              VARCHAR             
+website_url                              VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+profile_image                            VARCHAR             
+profile_image                            VARCHAR             
+display_name                             VARCHAR             
+display_name                             VARCHAR             
+badge_counts__bronze                     BIGINT              
+badge_counts__bronze                     BIGINT              
+badge_counts__silver                     BIGINT              
+badge_counts__silver                     BIGINT              
+badge_counts__gold                       BIGINT              
+badge_counts__gold                       BIGINT              
+_dlt_load_id                             VARCHAR             
+_dlt_load_id                             VARCHAR             
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+accept_rate                              BIGINT              
+accept_rate                              BIGINT              
+location                                 VARCHAR             
+location                                 VARCHAR             
+
+============================================================
+TABLE: users__collectives
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+role                                     VARCHAR             
+role                                     VARCHAR             
+collective__description                  VARCHAR             
+collective__description                  VARCHAR             
+collective__link                         VARCHAR             
+collective__link                         VARCHAR             
+collective__name                         VARCHAR             
+collective__name                         VARCHAR             
+collective__slug                         VARCHAR             
+collective__slug                         VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: users__collectives__collective__external_links
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+type                                     VARCHAR             
+type                                     VARCHAR             
+link                                     VARCHAR             
+link                                     VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
+
+============================================================
+TABLE: users__collectives__collective__tags
+============================================================
+Column Name                              Data Type           
+------------------------------------------------------------
+value                                    VARCHAR             
+value                                    VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_root_id                             VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_parent_id                           VARCHAR             
+_dlt_list_idx                            BIGINT              
+_dlt_list_idx                            BIGINT              
+_dlt_id                                  VARCHAR             
+_dlt_id                                  VARCHAR             
