@@ -1,0 +1,5 @@
+dbt init dbt_project
+have codegen package file as packages.yml
+cd dbt_project
+run dbt deps 
+you will get dbt_packages
