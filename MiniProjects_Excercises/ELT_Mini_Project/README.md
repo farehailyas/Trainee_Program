@@ -101,7 +101,7 @@ Intermediate models encapsulate reusable business logic, such as:
 - user badge totals
 - daily entity counts
 
-These models are reused across multiple marts to avoid duplicating transformations.
+e.g: question-tag mapping models is reused across 2 marts to avoid duplicating transformations.
 
 **Mart**
 
