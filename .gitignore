@@ -59,7 +59,8 @@ __pycache__/
 week5-dbt-dagster
 jaffle_shop
 logs
-
+week3-quality-checker/
+sql-optimization-test/
 
 week3-dagster-dbt
 *week4-dagster
