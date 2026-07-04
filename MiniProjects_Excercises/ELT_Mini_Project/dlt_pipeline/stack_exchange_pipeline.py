@@ -1,13 +1,17 @@
 import time
-import requests
-import dlt
-
-
-import time
-import requests
-import dlt
 import logging
+import requests
+import dlt
+
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s - %(message)s",
+)
+logging.getLogger("dlt").setLevel(logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 SORTS = {
     "users": "modified",
@@ -18,23 +22,31 @@ SORTS = {
     "badges": "rank",
 }
 
-def fetch_resource(endpoint):
+MAX_PAGES = 25
+
+
+def fetch_resource(endpoint, from_date=None, historical=False):
     page = 1
 
     while True:
+        params = {
+            "site": "stackoverflow",
+            "sort": SORTS[endpoint],
+            "order": "desc",
+            "pagesize": 100,
+            "page": page,
+        }
+
+        # for incremental
+        if not historical and from_date is not None:
+            params["fromdate"] = int(from_date)
+
         response = requests.get(
             f"https://api.stackexchange.com/2.3/{endpoint}",
-            params={
-                "site": "stackoverflow",
-                "sort": SORTS[endpoint],
-                "order": "desc",
-                "pagesize": 100,
-                "page": page,
-            },
+            params=params,
         )
 
         if response.status_code == 400:
-            print(f"{endpoint}: stopping at page {page}")
             logger.info(f"{endpoint}: stopping at page {page}")
             break
 
@@ -43,17 +55,17 @@ def fetch_resource(endpoint):
         data = response.json()
 
         yield from data["items"]
-        
-        if page > 25 :      # Anonymous API limit
-            break
+
         if "backoff" in data:
-            print(f"{endpoint}: sleeping {data['backoff']} seconds...")
             logger.info(f"{endpoint}: sleeping {data['backoff']} seconds...")
             time.sleep(data["backoff"])
 
         if not data.get("has_more", False):
             break
 
+        if page >= MAX_PAGES:
+            logger.info(f"{endpoint}: reached anonymous page limit.")
+            break
 
         page += 1
 
@@ -63,8 +75,18 @@ def fetch_resource(endpoint):
     primary_key="user_id",
     write_disposition="merge",
 )
-def users():
-    yield from fetch_resource("users")
+def users(
+    historical=False,
+    creation_date=dlt.sources.incremental(
+        "creation_date",
+        initial_value=0,
+    ),
+):
+    yield from fetch_resource(
+        "users",
+        from_date=creation_date.last_value,
+        historical=historical,
+    )
 
 
 @dlt.resource(
@@ -72,8 +94,18 @@ def users():
     primary_key="question_id",
     write_disposition="merge",
 )
-def questions():
-    yield from fetch_resource("questions")
+def questions(
+    historical=False,
+    last_activity=dlt.sources.incremental(
+        "last_activity_date",
+        initial_value=0,
+    ),
+):
+    yield from fetch_resource(
+        "questions",
+        from_date=last_activity.last_value,
+        historical=historical,
+    )
 
 
 @dlt.resource(
@@ -81,8 +113,18 @@ def questions():
     primary_key="answer_id",
     write_disposition="merge",
 )
-def answers():
-    yield from fetch_resource("answers")
+def answers(
+    historical=False,
+    last_activity=dlt.sources.incremental(
+        "last_activity_date",
+        initial_value=0,
+    ),
+):
+    yield from fetch_resource(
+        "answers",
+        from_date=last_activity.last_value,
+        historical=historical,
+    )
 
 
 @dlt.resource(
@@ -90,8 +132,18 @@ def answers():
     primary_key="comment_id",
     write_disposition="merge",
 )
-def comments():
-    yield from fetch_resource("comments")
+def comments(
+    historical=False,
+    last_creation=dlt.sources.incremental(
+        "creation_date",
+        initial_value=0,
+    ),
+):
+    yield from fetch_resource(
+        "comments",
+        from_date=last_creation.last_value,
+        historical=historical,
+    )
 
 
 @dlt.resource(
@@ -99,8 +151,11 @@ def comments():
     primary_key="name",
     write_disposition="merge",
 )
-def tags():
-    yield from fetch_resource("tags")
+def tags(historical=False):
+    yield from fetch_resource(
+        "tags",
+        historical=historical,
+    )
 
 
 @dlt.resource(
@@ -108,33 +163,20 @@ def tags():
     primary_key="badge_id",
     write_disposition="merge",
 )
-def badges():
-    yield from fetch_resource("badges")
+def badges(historical=False):
+    yield from fetch_resource(
+        "badges",
+        historical=historical,
+    )
 
 
 @dlt.source
-def stack_exchange_source():
-    yield users()
-    yield questions()
-    yield answers()
-    yield comments()
-    yield tags()
-    yield badges()
+def stack_exchange_source(load_mode="incremental"):
+    historical = load_mode == "historical"
 
-
-def load_stackexchange():
-    pipeline = dlt.pipeline(
-        pipeline_name="rest_api_stackexchange",
-        destination="duckdb",
-        dataset_name="raw_stackexchange",
-    )
-
-    load_info = pipeline.run(stack_exchange_source())
-    print(load_info)
-
-# def get_stack_exchange():
-#     return load_stackexchange()
-
-
-if __name__ == "__main__":
-    load_stackexchange()
+    yield users(historical=historical)
+    yield questions(historical=historical)
+    yield answers(historical=historical)
+    yield comments(historical=historical)
+    yield tags(historical=historical)
+    yield badges(historical=historical)
