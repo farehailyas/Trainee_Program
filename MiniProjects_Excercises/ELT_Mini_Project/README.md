@@ -139,14 +139,13 @@ int_question_tag + int_question_engagement
   dim_question_engagement (ranks tags by views, answers, comments)
 ```
 
----
-Data Limitations
+
+## Data Limitations
 
 Have 25 pages with anonymous key  
 Per page have 100 size  
 In model (fct_badge_distrubution) cannot find distribution over day as it is fixed metadata resource not the changing one
 Data is static and not changing so did not add incremental materialization in dbt modeling
----
 
 ## Schema & Documentation
 
