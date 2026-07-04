@@ -14,7 +14,6 @@ node_modules/
 dist/
 build/
 *project.toml
-*.gitignore
 week3-dlt-pipelines
 Week2-SQL
 *.dlt
@@ -28,7 +27,6 @@ week3-dlt-pipelines/Day1-dlt/.dlt/
 __pycache__/
 *.duckdb
 *.__pycache__
-*.gitignore
 # *requirements.txt
 /Week2-SQL
 week4-github_pipeline_deployment
