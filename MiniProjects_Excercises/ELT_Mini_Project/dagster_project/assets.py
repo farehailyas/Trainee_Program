@@ -1,82 +1,58 @@
-# import dlt
-# from dagster import AssetExecutionContext
-
-# import dlt
-# from dagster import Definitions
-# from dagster_dlt import DagsterDltResource, dlt_assets
-# from dagster_dbt import dbt_assets
-# from dlt_pipeline.stack_exchange_pipeline import stack_exchange_source  # adjust import path
-
-
-# @dlt_assets(
-#     dlt_source=stack_exchange_source(load_mode="incremental"),
-#     dlt_pipeline=dlt.pipeline(
-#         pipeline_name="rest_api_stackexchange",
-#         destination="duckdb",
-#         dataset_name="raw_stackexchange",
-#     ),
-#     name="stack_exchange",
-#     group_name="stack_exchange",
-# )
-# def stack_exchange_assets(context, dlt: DagsterDltResource):
-#     yield from dlt.run(context=context)
-
-
-
-# @dbt_assets(manifest="../dbt_project/target/manifest.json")
-# def stackexchange_dbt_assets(
-#     context: AssetExecutionContext,
-#     dbt: DbtCliResource,
-# ):
-#     yield from dbt.cli(["build"], context=context).stream()
 
 
 import dlt
 
 from dagster import asset
-from dagster_dbt import DbtCliResource, dbt_assets
-
+from dagster_dbt import DbtCliResource, dbt_assets , DagsterDbtTranslator
+from dagster_dlt import DagsterDltResource, dlt_assets
 from dlt_pipeline.stack_exchange_pipeline import stack_exchange_source
 from pathlib import Path
 
 DBT_PROJECT_DIR = Path(__file__).resolve().parent.parent / "dbt_project"
 MANIFEST_PATH = DBT_PROJECT_DIR / "target" / "manifest.json"
 
+
 pipeline = dlt.pipeline(
-    pipeline_name="rest_api_stackexchange",
+    pipeline_name="rest_api_stackexchange_incremental",
     destination="duckdb",
-    dataset_name="raw_stackexchange",
+    dataset_name="dlt_stack_exchange_source",
 )
 
-
-@asset(
+@dlt_assets(
+    dlt_source=stack_exchange_source(load_mode="incremental"),
+    dlt_pipeline=pipeline,
+    name="stack_exchange_incremental",
     group_name="stack_exchange",
 )
-def stack_exchange_historical(context):
-
-    load_info = pipeline.run(
-        stack_exchange_source(load_mode="historical")
-    )
-    context.log.info(str(load_info))
-
-    return load_info
+def stack_exchange_incremental(context, dlt: DagsterDltResource):
+    yield from dlt.run(context=context)
 
 
-@asset(
-    group_name="stack_exchange",
-)
-def stack_exchange_incremental(context):
+# @dlt_assets(
+#     dlt_source=stack_exchange_source(load_mode="historical"),
+#     dlt_pipeline=pipeline,
+#     name="stack_exchange_historical",
+#     group_name="stack_exchange",
+# )
+# def stack_exchange_historical(context, dlt: DagsterDltResource):
+#     yield from dlt.run(context=context)
 
-    load_info = pipeline.run(
-        stack_exchange_source(load_mode="incremental")
-    )
-    context.log.info(str(load_info))
+from dagster_dbt import DagsterDbtTranslator
+from dagster_dbt import DagsterDbtTranslator
 
-    return load_info
+class FlatDbtTranslator(DagsterDbtTranslator):
 
+    def get_asset_key(self, manifest_node):
+        if manifest_node.get("resource_type") == "source":
+            return f"dlt_stack_exchange_source_{manifest_node['name']}"
 
+        return super().get_asset_key(manifest_node)
+        
 @dbt_assets(
     manifest=MANIFEST_PATH,
+    dagster_dbt_translator=FlatDbtTranslator(),
+    # group_name="stack_exchange_models",
+
 )
 def stackexchange_dbt_assets(context, dbt: DbtCliResource):
 

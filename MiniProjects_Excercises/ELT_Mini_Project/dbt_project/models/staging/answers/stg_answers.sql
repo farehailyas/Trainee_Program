@@ -21,6 +21,6 @@ with source as (
 
     _dlt_load_id,
     _dlt_id
-  from {{ source('raw_stackexchange', 'answers') }}
+  from {{ source('dlt_stack_exchange_source', 'answers') }}
 )
 select * from source

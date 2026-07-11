@@ -13,7 +13,7 @@ with source as (
     TO_TIMESTAMP(closed_date ) as closed_at,
     TO_TIMESTAMP(protected_date ) as protected_at,
     TO_TIMESTAMP(locked_date ) as locked_at,
-    TO_TIMESTAMP(community_owned_date ) as community_owned_at,
+    -- TO_TIMESTAMP(community_owned_date ) as community_owned_at,
     owner__user_id as owner_user_id,
     owner__account_id as owner_account_id,
     owner__display_name as owner_display_name,
@@ -28,6 +28,6 @@ with source as (
     content_license,
     _dlt_load_id,
     _dlt_id as question_dlt_id
-  from {{ source('raw_stackexchange', 'questions') }}
+  from {{ source('dlt_stack_exchange_source', 'questions') }}
 )
 select * from source

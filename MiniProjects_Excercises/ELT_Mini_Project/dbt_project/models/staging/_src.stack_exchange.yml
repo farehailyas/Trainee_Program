@@ -1,7 +1,7 @@
 sources:
-  - name: raw_stackexchange
-    database: rest_api_stackexchange
-    schema: raw_stackexchange
+  - name: dlt_stack_exchange_source
+    database: rest_api_stackexchange_incremental
+    schema: dlt_stack_exchange_source
     tables:
       - name: users
       - name: tags

@@ -9,6 +9,6 @@ with source as (
     link,
     _dlt_load_id,
     _dlt_id
-  from {{ source('raw_stackexchange', 'badges') }}
+  from {{ source('dlt_stack_exchange_source', 'badges') }}
 )
 select * from source

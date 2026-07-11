@@ -8,6 +8,6 @@ with source as (
     has_synonyms,
     _dlt_load_id,
     _dlt_id
-  from {{ source('raw_stackexchange', 'tags') }}
+  from {{ source('dlt_stack_exchange_source', 'tags') }}
 )
 select * from source

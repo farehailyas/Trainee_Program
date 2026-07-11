@@ -181,20 +181,6 @@ comment_id                               BIGINT
 comment_id                               BIGINT              
 content_license                          VARCHAR             
 content_license                          VARCHAR             
-reply_to_user__account_id                BIGINT              
-reply_to_user__account_id                BIGINT              
-reply_to_user__reputation                BIGINT              
-reply_to_user__reputation                BIGINT              
-reply_to_user__user_id                   BIGINT              
-reply_to_user__user_id                   BIGINT              
-reply_to_user__user_type                 VARCHAR             
-reply_to_user__user_type                 VARCHAR             
-reply_to_user__profile_image             VARCHAR             
-reply_to_user__profile_image             VARCHAR             
-reply_to_user__display_name              VARCHAR             
-reply_to_user__display_name              VARCHAR             
-reply_to_user__link                      VARCHAR             
-reply_to_user__link                      VARCHAR             
 owner__account_id                        BIGINT              
 owner__account_id                        BIGINT              
 owner__reputation                        BIGINT              
@@ -215,6 +201,20 @@ _dlt_id                                  VARCHAR
 _dlt_id                                  VARCHAR             
 owner__accept_rate                       BIGINT              
 owner__accept_rate                       BIGINT              
+reply_to_user__account_id                BIGINT              
+reply_to_user__account_id                BIGINT              
+reply_to_user__reputation                BIGINT              
+reply_to_user__reputation                BIGINT              
+reply_to_user__user_id                   BIGINT              
+reply_to_user__user_id                   BIGINT              
+reply_to_user__user_type                 VARCHAR             
+reply_to_user__user_type                 VARCHAR             
+reply_to_user__profile_image             VARCHAR             
+reply_to_user__profile_image             VARCHAR             
+reply_to_user__display_name              VARCHAR             
+reply_to_user__display_name              VARCHAR             
+reply_to_user__link                      VARCHAR             
+reply_to_user__link                      VARCHAR             
 reply_to_user__accept_rate               BIGINT              
 reply_to_user__accept_rate               BIGINT              
 
@@ -251,8 +251,6 @@ owner__user_id                           BIGINT
 owner__user_id                           BIGINT              
 owner__user_type                         VARCHAR             
 owner__user_type                         VARCHAR             
-owner__accept_rate                       BIGINT              
-owner__accept_rate                       BIGINT              
 owner__profile_image                     VARCHAR             
 owner__profile_image                     VARCHAR             
 owner__display_name                      VARCHAR             
@@ -267,106 +265,16 @@ last_edit_date                           BIGINT
 last_edit_date                           BIGINT              
 accepted_answer_id                       BIGINT              
 accepted_answer_id                       BIGINT              
+owner__accept_rate                       BIGINT              
+owner__accept_rate                       BIGINT              
+protected_date                           BIGINT              
+protected_date                           BIGINT              
 closed_date                              BIGINT              
 closed_date                              BIGINT              
 closed_reason                            VARCHAR             
 closed_reason                            VARCHAR             
-protected_date                           BIGINT              
-protected_date                           BIGINT              
-migrated_from__on_date                   BIGINT              
-migrated_from__on_date                   BIGINT              
-migrated_from__question_id               BIGINT              
-migrated_from__question_id               BIGINT              
-migrated_from__other_site__launch_date   BIGINT              
-migrated_from__other_site__launch_date   BIGINT              
-migrated_from__other_site__open_beta_date BIGINT              
-migrated_from__other_site__open_beta_date BIGINT              
-migrated_from__other_site__closed_beta_date BIGINT              
-migrated_from__other_site__closed_beta_date BIGINT              
-migrated_from__other_site__site_state    VARCHAR             
-migrated_from__other_site__site_state    VARCHAR             
-migrated_from__other_site__high_resolution_icon_url VARCHAR             
-migrated_from__other_site__high_resolution_icon_url VARCHAR             
-migrated_from__other_site__favicon_url   VARCHAR             
-migrated_from__other_site__favicon_url   VARCHAR             
-migrated_from__other_site__icon_url      VARCHAR             
-migrated_from__other_site__icon_url      VARCHAR             
-migrated_from__other_site__audience      VARCHAR             
-migrated_from__other_site__audience      VARCHAR             
-migrated_from__other_site__site_url      VARCHAR             
-migrated_from__other_site__site_url      VARCHAR             
-migrated_from__other_site__api_site_parameter VARCHAR             
-migrated_from__other_site__api_site_parameter VARCHAR             
-migrated_from__other_site__logo_url      VARCHAR             
-migrated_from__other_site__logo_url      VARCHAR             
-migrated_from__other_site__name          VARCHAR             
-migrated_from__other_site__name          VARCHAR             
-migrated_from__other_site__site_type     VARCHAR             
-migrated_from__other_site__site_type     VARCHAR             
-migrated_from__other_site__styling__tag_background_color VARCHAR             
-migrated_from__other_site__styling__tag_background_color VARCHAR             
-migrated_from__other_site__styling__tag_foreground_color VARCHAR             
-migrated_from__other_site__styling__tag_foreground_color VARCHAR             
-migrated_from__other_site__styling__link_color VARCHAR             
-migrated_from__other_site__styling__link_color VARCHAR             
-community_owned_date                     BIGINT              
-community_owned_date                     BIGINT              
 locked_date                              BIGINT              
 locked_date                              BIGINT              
-
-============================================================
-TABLE: questions__migrated_from__other_site__aliases
-============================================================
-Column Name                              Data Type           
-------------------------------------------------------------
-value                                    VARCHAR             
-value                                    VARCHAR             
-_dlt_root_id                             VARCHAR             
-_dlt_root_id                             VARCHAR             
-_dlt_parent_id                           VARCHAR             
-_dlt_parent_id                           VARCHAR             
-_dlt_list_idx                            BIGINT              
-_dlt_list_idx                            BIGINT              
-_dlt_id                                  VARCHAR             
-_dlt_id                                  VARCHAR             
-
-============================================================
-TABLE: questions__migrated_from__other_site__markdown_extensions
-============================================================
-Column Name                              Data Type           
-------------------------------------------------------------
-value                                    VARCHAR             
-value                                    VARCHAR             
-_dlt_root_id                             VARCHAR             
-_dlt_root_id                             VARCHAR             
-_dlt_parent_id                           VARCHAR             
-_dlt_parent_id                           VARCHAR             
-_dlt_list_idx                            BIGINT              
-_dlt_list_idx                            BIGINT              
-_dlt_id                                  VARCHAR             
-_dlt_id                                  VARCHAR             
-
-============================================================
-TABLE: questions__migrated_from__other_site__related_sites
-============================================================
-Column Name                              Data Type           
-------------------------------------------------------------
-relation                                 VARCHAR             
-relation                                 VARCHAR             
-api_site_parameter                       VARCHAR             
-api_site_parameter                       VARCHAR             
-site_url                                 VARCHAR             
-site_url                                 VARCHAR             
-name                                     VARCHAR             
-name                                     VARCHAR             
-_dlt_root_id                             VARCHAR             
-_dlt_root_id                             VARCHAR             
-_dlt_parent_id                           VARCHAR             
-_dlt_parent_id                           VARCHAR             
-_dlt_list_idx                            BIGINT              
-_dlt_list_idx                            BIGINT              
-_dlt_id                                  VARCHAR             
-_dlt_id                                  VARCHAR             
 
 ============================================================
 TABLE: questions__tags
@@ -465,6 +373,8 @@ TABLE: users
 ============================================================
 Column Name                              Data Type           
 ------------------------------------------------------------
+timed_penalty_date                       BIGINT              
+timed_penalty_date                       BIGINT              
 account_id                               BIGINT              
 account_id                               BIGINT              
 is_employee                              BOOLEAN             
@@ -491,8 +401,6 @@ user_type                                VARCHAR
 user_type                                VARCHAR             
 user_id                                  BIGINT              
 user_id                                  BIGINT              
-website_url                              VARCHAR             
-website_url                              VARCHAR             
 link                                     VARCHAR             
 link                                     VARCHAR             
 profile_image                            VARCHAR             
@@ -509,10 +417,12 @@ _dlt_load_id                             VARCHAR
 _dlt_load_id                             VARCHAR             
 _dlt_id                                  VARCHAR             
 _dlt_id                                  VARCHAR             
-accept_rate                              BIGINT              
-accept_rate                              BIGINT              
 location                                 VARCHAR             
 location                                 VARCHAR             
+website_url                              VARCHAR             
+website_url                              VARCHAR             
+accept_rate                              BIGINT              
+accept_rate                              BIGINT              
 
 ============================================================
 TABLE: users__collectives
