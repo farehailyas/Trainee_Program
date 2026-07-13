@@ -1,6 +1,6 @@
 
 from dagster import AssetSelection, define_asset_job
-from .assets import   stack_exchange_incremental  , stackexchange_dbt_assets  #stack_exchange_historical
+from .assets import   stack_exchange_incremental  , stackexchange_dbt_assets  
 
 # historical_job = define_asset_job(
 #     name="stack_exchange_historical_job",

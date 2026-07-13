@@ -14,8 +14,10 @@ MANIFEST_PATH = DBT_PROJECT_DIR / "target" / "manifest.json"
 
 pipeline = dlt.pipeline(
     pipeline_name="rest_api_stackexchange_incremental",
-    destination="duckdb",
-    dataset_name="dlt_stack_exchange_source",
+    destination="snowflake",
+    # dataset_name="dlt_stack_exchange_source",
+    dataset_name = "raw"
+
 )
 
 @dlt_assets(

@@ -1,7 +1,7 @@
 sources:
   - name: dlt_stack_exchange_source
-    database: rest_api_stackexchange_incremental
-    schema: dlt_stack_exchange_source
+    database: launchpad_dev
+    schema: raw
     tables:
       - name: users
       - name: tags

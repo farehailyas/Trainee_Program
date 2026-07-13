@@ -23,7 +23,7 @@ SORTS = {
     "badges": "rank",
 }
 
-MAX_PAGES = 10
+MAX_PAGES = 26
 
 
 @sleep_and_retry
@@ -60,6 +60,7 @@ def fetch_resource(endpoint, from_date=None, historical=False):
         if not historical and from_date is not None:
             print("running script incrementally")
             params["fromdate"] = int(from_date)
+            print(from_date)
         else:
             print("running script historically")
         
