@@ -4,7 +4,7 @@ import requests
 import dlt
 from tenacity import retry, stop_after_attempt, wait_exponential , retry_if_exception_type
 import logging
-from ratelimit import limits , sleep_and_retry
+# from ratelimit import limits , sleep_and_retry
 
 logging.basicConfig(
     level=logging.INFO,
@@ -26,8 +26,8 @@ SORTS = {
 MAX_PAGES = 26
 
 
-@sleep_and_retry
-@limits(calls=30, period=1)
+# @sleep_and_retry
+# @limits(calls=30, period=1)
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=1, max=30),
@@ -211,13 +211,15 @@ def stack_exchange_source(load_mode="incremental"):
     yield badges(historical=historical)
 
 
+import dlt
+from dlt.hub import run
 
-# pipeline = dlt.pipeline(
-#     pipeline_name="rest_api_stackexchange",
-#     destination="duckdb",
-#     dataset_name="raw_stackexchange",
-# )
-# load_info = pipeline.run(
-#     stack_exchange_source(load_mode="historical")
-# )
-# print(load_info)
+@run.pipeline("stack_exchange_pipeline")
+def load_stack_exchange():
+    """Load Stack Overflow data into Snowflake."""
+    pipeline = dlt.pipeline(
+        pipeline_name="rest_api_stackexchange_incremental",
+        destination="snowflake",
+        dataset_name="raw",
+    )
+    print(pipeline.run(stack_exchange_source(load_mode="incremental")))

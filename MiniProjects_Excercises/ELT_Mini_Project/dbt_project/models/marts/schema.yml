@@ -1,0 +1,79 @@
+# models/marts/schema.yml
+version: 2
+
+models:
+  - name: dim_daily_volume
+    description: Daily activity volume by type (questions, answers, comments)
+    columns:
+      - name: day
+        description: Date of activity
+      - name: activity_type
+        description: Type of activity - Question, Answer, or Comment
+      - name: daily_volume
+        description: Count of activity for the given day and type
+
+  - name: dim_first_answer_time
+    description: Average time to first answer per tag, aggregated monthly
+    columns:
+      - name: tag_value
+        description: Tag name
+      - name: month
+        description: Month of question creation
+      - name: avg_time_to_first_answer_minutes
+        description: Average minutes from question creation to first answer
+
+  - name: dim_question_engagement
+    description: Tags ranked by engagement metrics (views, answers, comments per question)
+    columns:
+      - name: tag_value
+        description: Tag name
+      - name: question_count
+        description: Total questions with this tag
+      - name: avg_views_per_question
+        description: Average views per question for this tag
+      - name: views_rank
+        description: Rank by average views (1 = highest)
+      - name: avg_answers_per_question
+        description: Average answers per question for this tag
+      - name: answers_rank
+        description: Rank by average answers (1 = highest)
+      - name: avg_comments_per_question
+        description: Average comments per question for this tag
+      - name: comments_rank
+        description: Rank by average comments (1 = highest)
+
+  - name: dim_users_contribution
+    description: Users ranked by reputation, total badges, and accepted answer rate
+    columns:
+      - name: user_id
+        description: Unique user identifier
+      - name: display_name
+        description: User's display name
+      - name: reputation
+        description: User reputation score
+      - name: rank_by_reputation
+        description: Rank by reputation (1 = highest)
+      - name: badges_earned
+        description: Total badges earned by user
+      - name: rank_by_total_badges
+        description: Rank by badges (1 = most badges)
+      - name: accepted_answer_rate
+        description: Percentage of user's answers that were accepted
+      - name: rank_by_accepted_answer_rate
+        description: Rank by accepted answer rate (1 = highest)
+
+  - name: dim_unanswered_question
+    description: Questions with answer-to-view ratio for engagement analysis
+    columns:
+      - name: question_id
+        description: Unique question identifier
+      - name: title
+        description: Question title
+      - name: is_answered
+        description: Whether question has been answered
+      - name: view_count
+        description: Total views for the question
+      - name: answer_count
+        description: Total answers for the question
+      - name: answer_to_view_ratio
+        description: Ratio of answers to views (answers / views)

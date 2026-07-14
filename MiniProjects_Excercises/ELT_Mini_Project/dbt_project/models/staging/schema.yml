@@ -1,5 +1,6 @@
 models:
   - name: stg_users
+    description: Staging layer for users data
     columns:
       - name: user_id
         data_tests:
