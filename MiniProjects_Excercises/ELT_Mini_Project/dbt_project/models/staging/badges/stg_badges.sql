@@ -10,5 +10,11 @@ with source as (
     _dlt_load_id,
     _dlt_id
   from {{ source('dlt_stack_exchange_source', 'badges') }}
+),
+badges_count AS (
+  SELECT badge_type , COUNT(badge_id)
+  FROM {{ source('dlt_stack_exchange_source', 'badges') }}
+  GROUP BY badge_type
 )
+
 select * from source
