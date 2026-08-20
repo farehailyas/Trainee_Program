@@ -74,9 +74,7 @@ week4-OpenAQ-dlt_pipeline
 week5-dbt-dagster/
 jaffle_shop
 logs
-
 logs
-
 target/
 snapshots/
 .vscode
@@ -100,3 +98,11 @@ analyses
 *snapshots
 *target
 *dbt_project.yml
+data/
+warehouse_tradeoff
+*.csv
+/minilm-quantized
+m2v-minilm
+ml_cycle.png
+Pasted image.png
+image.png
