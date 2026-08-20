@@ -2,8 +2,9 @@ import time
 import logging
 import requests
 import dlt
-
+from tenacity import retry, stop_after_attempt, wait_exponential , retry_if_exception_type
 import logging
+# from ratelimit import limits , sleep_and_retry
 
 logging.basicConfig(
     level=logging.INFO,
@@ -22,8 +23,26 @@ SORTS = {
     "badges": "rank",
 }
 
-MAX_PAGES = 25
+MAX_PAGES = 26
 
+
+# @sleep_and_retry
+# @limits(calls=30, period=1)
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=1, max=30),
+    retry=retry_if_exception_type(
+        (requests.exceptions.Timeout,
+         requests.exceptions.ConnectionError)
+    ),
+)
+def get_page(endpoint, params):
+    response = requests.get(
+        f"https://api.stackexchange.com/2.3/{endpoint}",
+        params=params,
+        timeout=30,
+    )
+    return response
 
 def fetch_resource(endpoint, from_date=None, historical=False):
     page = 1
@@ -39,15 +58,20 @@ def fetch_resource(endpoint, from_date=None, historical=False):
 
         # for incremental
         if not historical and from_date is not None:
+            print("running script incrementally")
             params["fromdate"] = int(from_date)
+            print(from_date)
+        else:
+            print("running script historically")
+        
 
-        response = requests.get(
-            f"https://api.stackexchange.com/2.3/{endpoint}",
-            params=params,
-        )
-
+        response = get_page(endpoint, params)
         if response.status_code == 400:
             logger.info(f"{endpoint}: stopping at page {page}")
+            break
+
+        if response.status_code == 429:
+            logger.info(f"Api quota exhausted")
             break
 
         response.raise_for_status()
@@ -67,13 +91,14 @@ def fetch_resource(endpoint, from_date=None, historical=False):
             logger.info(f"{endpoint}: reached anonymous page limit.")
             break
 
-        page += 1
+        page += 1        
 
 
 @dlt.resource(
     name="users",
     primary_key="user_id",
     write_disposition="merge",
+    columns = {"creation_date" : { "nullable" : False}}
 )
 def users(
     historical=False,
@@ -93,6 +118,7 @@ def users(
     name="questions",
     primary_key="question_id",
     write_disposition="merge",
+    columns = {"last_activity_date" : { "nullable" : False}}
 )
 def questions(
     historical=False,
@@ -112,6 +138,7 @@ def questions(
     name="answers",
     primary_key="answer_id",
     write_disposition="merge",
+    columns = {"last_activity_date" : { "nullable" : False}}
 )
 def answers(
     historical=False,
@@ -131,6 +158,7 @@ def answers(
     name="comments",
     primary_key="comment_id",
     write_disposition="merge",
+    columns = {"creation_date" : { "nullable" : False}}
 )
 def comments(
     historical=False,
@@ -170,6 +198,7 @@ def badges(historical=False):
     )
 
 
+
 @dlt.source
 def stack_exchange_source(load_mode="incremental"):
     historical = load_mode == "historical"
@@ -180,3 +209,17 @@ def stack_exchange_source(load_mode="incremental"):
     yield comments(historical=historical)
     yield tags(historical=historical)
     yield badges(historical=historical)
+
+
+import dlt
+from dlt.hub import run
+
+@run.pipeline("stack_exchange_pipeline")
+def load_stack_exchange():
+    """Load Stack Overflow data into Snowflake."""
+    pipeline = dlt.pipeline(
+        pipeline_name="rest_api_stackexchange_incremental",
+        destination="snowflake",
+        dataset_name="raw",
+    )
+    print(pipeline.run(stack_exchange_source(load_mode="incremental")))

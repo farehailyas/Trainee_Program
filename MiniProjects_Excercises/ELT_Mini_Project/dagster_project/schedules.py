@@ -1,8 +1,6 @@
 from dagster import ScheduleDefinition
 from dagster_dlt import DagsterDltResource
 
-from .assets import stack_exchange_historical ,stack_exchange_incremental
-
 from .jobs import incremental_job
 
 

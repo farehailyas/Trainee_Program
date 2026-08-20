@@ -1,7 +1,7 @@
 sources:
-  - name: raw_stackexchange
-    database: rest_api_stackexchange
-    schema: raw_stackexchange
+  - name: dlt_stack_exchange_source
+    database: launchpad_dev
+    schema: raw
     tables:
       - name: users
       - name: tags

@@ -7,6 +7,6 @@ with source as (
     _dlt_list_idx as list_index,
     _dlt_id as tag_id
    
-  from {{ source('raw_stackexchange', 'questions__tags') }}
+  from {{ source('dlt_stack_exchange_source', 'questions__tags') }}
 )
 select * from source

@@ -25,6 +25,6 @@ with source as (
     TO_TIMESTAMP(last_modified_date ) as last_modified_at,
     _dlt_load_id,
     _dlt_id
-  from {{ source('raw_stackexchange', 'users') }}
+  from {{ source('dlt_stack_exchange_source', 'users') }}
 )
 select * from source

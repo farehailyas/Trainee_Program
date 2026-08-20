@@ -25,6 +25,6 @@ with source as (
     content_license,
     _dlt_load_id,
     _dlt_id
-  from {{ source('raw_stackexchange', 'comments') }}
+  from {{ source('dlt_stack_exchange_source', 'comments') }}
 )
 select * from source

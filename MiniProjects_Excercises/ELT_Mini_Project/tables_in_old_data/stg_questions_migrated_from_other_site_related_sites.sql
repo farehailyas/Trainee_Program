@@ -9,6 +9,6 @@ with source as (
     _dlt_parent_id,
     _dlt_list_idx as list_index,
     _dlt_id
-  from {{ source('raw_stackexchange', 'questions__migrated_from__other_site__related_sites') }}
+  from {{ source('dlt_stack_exchange_source', 'questions__migrated_from__other_site__related_sites') }}
 )
 select * from source
